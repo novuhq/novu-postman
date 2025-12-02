@@ -1,0 +1,13 @@
+# OS
+.DS_Store
+
+# Speakeasy
+.speakeasy/temp/
+.speakeasy/logs/
+.speakeasy/reports/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

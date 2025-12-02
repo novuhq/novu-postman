@@ -1,0 +1,14 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    novu-openapi:
+        inputs:
+            - location: https://api.novu.co/openapi.sdk.yaml
+        output: sources/openapi.json
+        registry:
+            location: registry.speakeasyapi.dev/novu/novu/novu-openapi
+targets:
+    postman:
+        target: postman
+        source: novu-openapi
+        output: postman

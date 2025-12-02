@@ -1,0 +1,30 @@
+speakeasyVersion: 1.666.0
+sources:
+    novu-openapi:
+        sourceNamespace: novu-openapi
+        sourceRevisionDigest: sha256:973dd24f70a47cff44a3e8bc932ecdbf3bafb19f6c5d917e891508fdf92d301e
+        sourceBlobDigest: sha256:30d81c9dca8c8ae1dbbf92469ad76cecbc5b435ce80af5148333cf1115e81149
+        tags:
+            - latest
+            - 3.11.0
+targets:
+    postman:
+        source: novu-openapi
+        sourceNamespace: novu-openapi
+        sourceRevisionDigest: sha256:973dd24f70a47cff44a3e8bc932ecdbf3bafb19f6c5d917e891508fdf92d301e
+        sourceBlobDigest: sha256:30d81c9dca8c8ae1dbbf92469ad76cecbc5b435ce80af5148333cf1115e81149
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        novu-openapi:
+            inputs:
+                - location: https://api.novu.co/openapi.sdk.yaml
+            output: sources/openapi.json
+            registry:
+                location: registry.speakeasyapi.dev/novu/novu/novu-openapi
+    targets:
+        postman:
+            target: postman
+            source: novu-openapi
+            output: postman
