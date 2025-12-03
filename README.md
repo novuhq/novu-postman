@@ -32,7 +32,7 @@ After importing, create an environment with the following variables:
 | Variable | Description |
 |----------|-------------|
 | `baseUrl` | API base URL (`https://api.novu.co` or `https://eu.api.novu.co`) |
-| `secretKey` | Your Novu API secret key |
+| `secretKey` | Your Novu API secret key (prepend the key with `ApiKey` like: `ApiKey <key>`) |
 
 ## Auto-Generation
 
