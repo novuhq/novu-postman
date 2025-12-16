@@ -22,8 +22,13 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  persistentEdits: {}
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 postman:
-  version: 1.0.0
+  version: 1.0.1
   baseErrorName: NovuError
   collectionName: Novu API
   defaultErrorName: NovuDefaultError

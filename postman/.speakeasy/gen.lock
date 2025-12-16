@@ -1,12 +1,18 @@
 lockVersion: 2.0.0
 id: 9a7be7b2-e0cf-42b0-b8dd-2d09c19f79fc
 management:
-  docChecksum: fe09c741a7ad26da2e4bbf161300a185
+  docChecksum: 63b581b27c52f67a2e2cb7e5207543ca
   docVersion: 3.11.0
-  speakeasyVersion: 1.666.0
-  generationVersion: 2.768.0
-  releaseVersion: 1.0.0
-  configChecksum: e0cdc797bd29a6b54b6d65aad466b17a
+  speakeasyVersion: 1.676.1
+  generationVersion: 2.781.2
+  releaseVersion: 1.0.1
+  configChecksum: 6c3c29200b93dc17b95beeec2dc3166b
+  repoURL: https://github.com/novuhq/novu-postman.git
+  repoSubDirectory: postman
+persistentEdits:
+  generation_id: 49663852-ae03-4ada-836e-f17eacc1bb21
+  pristine_commit_hash: 51cd95544692f8c4067d1b4fe4bbd608ba1aa2d9
+  pristine_tree_hash: c1fce6148ce053f3a392de45f42cbf634110b396
 features:
   postman:
     constsAndDefaults: 0.1.0
@@ -18,8 +24,11 @@ features:
     groups: 0.1.1
     nameOverrides: 0.1.0
     retries: 0.0.0
-generatedFiles:
-  - novu_api_postman_collection.json
+trackedFiles:
+  novu_api_postman_collection.json:
+    id: f80b59e13e5c
+    last_write_checksum: sha1:b23557a71478f9faad13cb5cc3be8a4cdca033f8
+    pristine_git_object: b03fedb4a362947c1d17dc814ef857a89d900070
 examples:
   EventsController_trigger:
     speakeasy-default-events-controller-trigger:
@@ -129,6 +138,7 @@ examples:
         query:
           id: "tenant-prod-123"
           search: "tenant"
+          limit: 10
       responses:
         "200":
           application/json: {"data": [], "next": "<value>", "previous": "<value>", "totalCount": 1187.63, "totalCountCapped": true}
@@ -335,6 +345,10 @@ examples:
           application/json: "Please wait some time, then try again."
   LayoutsController_list:
     speakeasy-default-layouts-controller-list:
+      parameters:
+        query:
+          limit: 10
+          offset: 0
       responses:
         "200":
           application/json: {"layouts": [{"_id": "<id>", "layoutId": "<id>", "slug": "<value>", "name": "<value>", "isDefault": false, "isTranslationEnabled": true, "updatedAt": "1735681034060", "createdAt": "1725690003700", "origin": "novu-cloud-v1", "type": "BRIDGE", "controls": {"values": {}}}], "totalCount": 2739.33}
@@ -476,6 +490,9 @@ examples:
           application/json: "Please wait some time, then try again."
   SubscribersController_searchSubscribers:
     speakeasy-default-subscribers-controller-search-subscribers:
+      parameters:
+        query:
+          limit: 10
       responses:
         "200":
           application/json: {"data": [{"channels": [{"providerId": "apns", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": false, "createdAt": "1721320696955", "updatedAt": "1735657113100"}], "next": "<value>", "previous": "<value>", "totalCount": 631.49, "totalCountCapped": true}
@@ -664,6 +681,8 @@ examples:
       parameters:
         path:
           subscriberId: "<id>"
+        query:
+          limit: 10
       responses:
         "200":
           application/json: {"data": [{"_id": "64da692e9a94fb2e6449ad08", "createdAt": "2021-01-01T00:00:00.000Z", "topic": {"_id": "64da692e9a94fb2e6449ad06", "key": "product-updates", "name": "Product Updates", "createdAt": "2023-08-15T00:00:00.000Z", "updatedAt": "2023-08-15T00:00:00.000Z"}, "subscriber": {"_id": "64da692e9a94fb2e6449ad07", "subscriberId": "user-123", "avatar": "https://example.com/avatar.png", "firstName": "John", "lastName": "Doe", "email": "john@example.com"}}], "next": "<value>", "previous": "<value>", "totalCount": 2140.37, "totalCountCapped": true}
@@ -818,6 +837,7 @@ examples:
         query:
           limit: 10
           payload: "btoa(JSON.stringify({ foo: 123 })) results in base64 encoded string like eyJmb28iOjEyM30="
+          page: 0
       responses:
         "200":
           application/json: {"totalCount": 5, "hasMore": true, "data": [], "pageSize": 2, "page": 1}
@@ -880,6 +900,9 @@ examples:
           application/json: "Please wait some time, then try again."
   TopicsController_listTopics:
     speakeasy-default-topics-controller-list-topics:
+      parameters:
+        query:
+          limit: 10
       responses:
         "200":
           application/json: {"data": [{"_id": "64da692e9a94fb2e6449ad06", "key": "product-updates", "name": "Product Updates", "createdAt": "2023-08-15T00:00:00.000Z", "updatedAt": "2023-08-15T00:00:00.000Z"}], "next": "<value>", "previous": "<value>", "totalCount": 2418.49, "totalCountCapped": true}
@@ -983,6 +1006,8 @@ examples:
       parameters:
         path:
           topicKey: "<value>"
+        query:
+          limit: 10
       responses:
         "200":
           application/json: {"data": [], "next": "<value>", "previous": "<value>", "totalCount": 4830.71, "totalCountCapped": true}
@@ -1026,7 +1051,7 @@ examples:
         path:
           topicKey: "<value>"
       requestBody:
-        application/json: {"subscriberIds": ["subscriberId1", "subscriberId2"]}
+        application/json: {"subscriptions": [{"identifier": "subscriber-123-subscription-a", "subscriberId": "subscriber-123"}, {"subscriberId": "subscriber-456"}, {"identifier": "subscriber-789-subscription-b"}]}
       responses:
         "200":
           application/json: {"data": [], "meta": {"totalCount": 3, "successful": 2, "failed": 1}, "errors": [{"subscriberId": "invalid-subscriber-id", "code": "SUBSCRIBER_NOT_FOUND", "message": "Subscriber with ID invalid-subscriber-id could not be found"}]}
@@ -1048,6 +1073,7 @@ examples:
         path:
           topicKey: "<value>"
           subscriptionId: "<id>"
+          subscriptionIdOrIdentifier: "<value>"
       requestBody:
         application/json: {"name": "My Subscription", "preferences": [{"workflowId": "workflow-123", "condition": {"===": [{"var": "tier"}, "premium"]}}]}
       responses:
@@ -1175,6 +1201,10 @@ examples:
           application/json: "Please wait some time, then try again."
   WorkflowController_searchWorkflows:
     speakeasy-default-workflow-controller-search-workflows:
+      parameters:
+        query:
+          limit: 10
+          offset: 0
       responses:
         "200":
           application/json: {"workflows": [{"name": "<value>", "updatedAt": "1735636970594", "createdAt": "1705782861487", "_id": "<id>", "workflowId": "<id>", "slug": "<value>", "status": "ACTIVE", "origin": "external", "stepTypeOverviews": [], "steps": []}], "totalCount": 1320.19}
@@ -1551,4 +1581,234 @@ examples:
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "503":
           application/json: "Please wait some time, then try again."
+  ChannelConnectionsController_listChannelConnections:
+    speakeasy-default-channel-connections-controller-list-channel-connections:
+      parameters:
+        query:
+          limit: 10
+          subscriberId: "subscriber-123"
+          channel: "chat"
+          providerId: "slack"
+          integrationIdentifier: "slack-prod"
+          contextKeys: ["tenant:org-123", "region:us-east-1"]
+      responses:
+        "200":
+          application/json: {"data": [{"identifier": "<value>", "channel": "chat", "providerId": "slack", "integrationIdentifier": "slack-prod", "subscriberId": "subscriber-123", "contextKeys": ["tenant:org-123", "region:us-east-1"], "workspace": {"id": "T123456", "name": "Acme HQ"}, "auth": {"accessToken": "Workspace access token"}, "createdAt": "1718615117901", "updatedAt": "1735647338789"}], "next": "<value>", "previous": "<value>", "totalCount": 4308.47, "totalCountCapped": false}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {"key": "value"}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "429":
+          application/json: "API rate limit exceeded"
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "503":
+          application/json: "Please wait some time, then try again."
+  ChannelConnectionsController_createChannelConnection:
+    speakeasy-default-channel-connections-controller-create-channel-connection:
+      requestBody:
+        application/json: {"identifier": "slack-prod-user123-abc4", "subscriberId": "subscriber-123", "integrationIdentifier": "slack-prod", "workspace": {"id": "T123456", "name": "Acme HQ"}, "auth": {"accessToken": "Workspace access token"}}
+      responses:
+        "201":
+          application/json: {"identifier": "<value>", "channel": "sms", "providerId": "slack", "integrationIdentifier": "slack-prod", "subscriberId": "subscriber-123", "contextKeys": ["tenant:org-123", "region:us-east-1"], "workspace": {"id": "T123456", "name": "Acme HQ"}, "auth": {"accessToken": "Workspace access token"}, "createdAt": "1719812430207", "updatedAt": "1735628544115"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {"key": "value"}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "429":
+          application/json: "API rate limit exceeded"
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "503":
+          application/json: "Please wait some time, then try again."
+  ChannelConnectionsController_getChannelConnectionByIdentifier:
+    speakeasy-default-channel-connections-controller-get-channel-connection-by-identifier:
+      parameters:
+        path:
+          identifier: "<value>"
+      responses:
+        "200":
+          application/json: {"identifier": "<value>", "channel": "in_app", "providerId": "slack", "integrationIdentifier": "slack-prod", "subscriberId": "subscriber-123", "contextKeys": ["tenant:org-123", "region:us-east-1"], "workspace": {"id": "T123456", "name": "Acme HQ"}, "auth": {"accessToken": "Workspace access token"}, "createdAt": "1734623991411", "updatedAt": "1735660461133"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {"key": "value"}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "429":
+          application/json: "API rate limit exceeded"
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "503":
+          application/json: "Please wait some time, then try again."
+  ChannelConnectionsController_updateChannelConnection:
+    speakeasy-default-channel-connections-controller-update-channel-connection:
+      parameters:
+        path:
+          identifier: "<value>"
+      requestBody:
+        application/json: {"workspace": {"id": "T123456", "name": "Acme HQ"}, "auth": {"accessToken": "Workspace access token"}}
+      responses:
+        "200":
+          application/json: {"identifier": "<value>", "channel": "sms", "providerId": "slack", "integrationIdentifier": "slack-prod", "subscriberId": "subscriber-123", "contextKeys": ["tenant:org-123", "region:us-east-1"], "workspace": {"id": "T123456", "name": "Acme HQ"}, "auth": {"accessToken": "Workspace access token"}, "createdAt": "1704570816815", "updatedAt": "1735671505241"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {"key": "value"}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "429":
+          application/json: "API rate limit exceeded"
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "503":
+          application/json: "Please wait some time, then try again."
+  ChannelConnectionsController_deleteChannelConnection:
+    speakeasy-default-channel-connections-controller-delete-channel-connection:
+      parameters:
+        path:
+          identifier: "<value>"
+      responses:
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {"key": "value"}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "429":
+          application/json: "API rate limit exceeded"
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "503":
+          application/json: "Please wait some time, then try again."
+  ChannelEndpointsController_listChannelEndpoints:
+    speakeasy-default-channel-endpoints-controller-list-channel-endpoints:
+      parameters:
+        query:
+          limit: 10
+          subscriberId: "subscriber-123"
+          contextKeys: ["tenant:org-123", "region:us-east-1"]
+          providerId: "slack"
+          integrationIdentifier: "slack-prod"
+          connectionIdentifier: "slack-connection-abc123"
+      responses:
+        "200":
+          application/json: {"data": [{"identifier": "<value>", "channel": "in_app", "providerId": "slack", "integrationIdentifier": "slack-prod", "connectionIdentifier": "slack-connection-abc123", "subscriberId": "subscriber-123", "contextKeys": ["tenant:org-123", "region:us-east-1"], "type": "slack_channel", "endpoint": "<value>", "createdAt": "1718854768099", "updatedAt": "1735684381993"}], "next": "<value>", "previous": "<value>", "totalCount": 4491.25, "totalCountCapped": false}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {"key": "value"}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "429":
+          application/json: "API rate limit exceeded"
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "503":
+          application/json: "Please wait some time, then try again."
+  ChannelEndpointsController_createChannelEndpoint:
+    speakeasy-default-channel-endpoints-controller-create-channel-endpoint:
+      requestBody:
+        application/json: "<value>"
+      responses:
+        "201":
+          application/json: {"identifier": "<value>", "channel": null, "providerId": "slack", "integrationIdentifier": "slack-prod", "connectionIdentifier": "slack-connection-abc123", "subscriberId": "subscriber-123", "contextKeys": ["tenant:org-123", "region:us-east-1"], "type": "slack_channel", "endpoint": "<value>", "createdAt": "1734877846053", "updatedAt": "1735654696075"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {"key": "value"}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "429":
+          application/json: "API rate limit exceeded"
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "503":
+          application/json: "Please wait some time, then try again."
+  ChannelEndpointsController_getChannelEndpoint:
+    speakeasy-default-channel-endpoints-controller-get-channel-endpoint:
+      parameters:
+        path:
+          identifier: "<value>"
+      responses:
+        "200":
+          application/json: {"identifier": "<value>", "channel": "push", "providerId": "slack", "integrationIdentifier": "slack-prod", "connectionIdentifier": "slack-connection-abc123", "subscriberId": "subscriber-123", "contextKeys": ["tenant:org-123", "region:us-east-1"], "type": "slack_channel", "endpoint": "<value>", "createdAt": "1713941362671", "updatedAt": "1735653429845"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {"key": "value"}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "429":
+          application/json: "API rate limit exceeded"
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "503":
+          application/json: "Please wait some time, then try again."
+  ChannelEndpointsController_updateChannelEndpoint:
+    speakeasy-default-channel-endpoints-controller-update-channel-endpoint:
+      parameters:
+        path:
+          identifier: "<value>"
+      requestBody:
+        application/json: {"endpoint": "<value>"}
+      responses:
+        "200":
+          application/json: {"identifier": "<value>", "channel": "email", "providerId": "slack", "integrationIdentifier": "slack-prod", "connectionIdentifier": "slack-connection-abc123", "subscriberId": "subscriber-123", "contextKeys": ["tenant:org-123", "region:us-east-1"], "type": "slack_channel", "endpoint": "<value>", "createdAt": "1735568781809", "updatedAt": "1735632941354"}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {"key": "value"}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "429":
+          application/json: "API rate limit exceeded"
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "503":
+          application/json: "Please wait some time, then try again."
+  ChannelEndpointsController_deleteChannelEndpoint:
+    speakeasy-default-channel-endpoints-controller-delete-channel-endpoint:
+      parameters:
+        path:
+          identifier: "<value>"
+      responses:
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {"key": "value"}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "429":
+          application/json: "API rate limit exceeded"
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "503":
+          application/json: "Please wait some time, then try again."
+  IntegrationsController_getChatOAuthUrl:
+    speakeasy-default-integrations-controller-get-chat-O-auth-url:
+      requestBody:
+        application/json: {"subscriberId": "subscriber-123", "integrationIdentifier": "<value>", "scope": ["chat:write", "chat:write.public", "channels:read", "groups:read", "users:read", "users:read.email", "incoming-webhook"]}
+      responses:
+        "201":
+          application/json: {"url": "https://slack.com/oauth/v2/authorize?state=..."}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {"key": "value"}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "429":
+          application/json: "API rate limit exceeded"
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "503":
+          application/json: "Please wait some time, then try again."
 examplesVersion: 1.0.2
+releaseNotes: "## Postman SDK Changes:\n* `Novu.Topics.Subscriptions.update()`:  `request` **Changed** **Breaking** :warning:\n* `Novu.Channel Endpoints.create()`: **Added**\n* `Novu.Channel Connections.retrieve()`: **Added**\n* `Novu.Channel Connections.update()`: **Added**\n* `Novu.Channel Connections.delete()`: **Added**\n* `Novu.Channel Endpoints.list()`: **Added**\n* `Novu.Channel Connections.list()`: **Added**\n* `Novu.Channel Endpoints.retrieve()`: **Added**\n* `Novu.Channel Endpoints.update()`: **Added**\n* `Novu.Channel Endpoints.delete()`: **Added**\n* `Novu.Integrations.generateChatOAuthUrl()`: **Added**\n* `Novu.Subscribers.Preferences.bulkUpdate()`:  `response.[].condition` **Added**\n* `Novu.Topics.Subscriptions.delete()`: \n  *  `request.DeleteTopicSubscriptionsRequestDto` **Changed**\n* `Novu.Channel Connections.create()`: **Added**\n"
+generatedFiles:
+  - novu_api_postman_collection.json
