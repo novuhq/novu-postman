@@ -1,5 +1,13 @@
-speakeasyVersion: 1.666.0
+speakeasyVersion: 1.676.1
 sources:
+    novu-oas:
+        sourceNamespace: novu-oas
+        sourceRevisionDigest: sha256:05220c3beab2f051136c5db05e94625d1ae9e352a545b35cca69940c9cae5b46
+        sourceBlobDigest: sha256:56c9c49fbdc86d4b58d2e56048f8bb2becc4d58451ac4b523b40fcf2405527df
+        tags:
+            - latest
+            - speakeasy-sdk-regen-1765497949
+            - 3.11.0
     novu-openapi:
         sourceNamespace: novu-openapi
         sourceRevisionDigest: sha256:973dd24f70a47cff44a3e8bc932ecdbf3bafb19f6c5d917e891508fdf92d301e
@@ -9,22 +17,22 @@ sources:
             - 3.11.0
 targets:
     postman:
-        source: novu-openapi
-        sourceNamespace: novu-openapi
-        sourceRevisionDigest: sha256:973dd24f70a47cff44a3e8bc932ecdbf3bafb19f6c5d917e891508fdf92d301e
-        sourceBlobDigest: sha256:30d81c9dca8c8ae1dbbf92469ad76cecbc5b435ce80af5148333cf1115e81149
+        source: novu-oas
+        sourceNamespace: novu-oas
+        sourceRevisionDigest: sha256:05220c3beab2f051136c5db05e94625d1ae9e352a545b35cca69940c9cae5b46
+        sourceBlobDigest: sha256:56c9c49fbdc86d4b58d2e56048f8bb2becc4d58451ac4b523b40fcf2405527df
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
-        novu-openapi:
+        novu-oas:
             inputs:
                 - location: https://api.novu.co/openapi.sdk.yaml
             output: sources/openapi.json
             registry:
-                location: registry.speakeasyapi.dev/novu/novu/novu-openapi
+                location: registry.speakeasyapi.dev/novu/novu/novu-oas
     targets:
         postman:
             target: postman
-            source: novu-openapi
+            source: novu-oas
             output: postman
