@@ -28,7 +28,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 postman:
-  version: 1.0.1
+  version: 1.0.2
   baseErrorName: NovuError
   collectionName: Novu API
   defaultErrorName: NovuDefaultError
