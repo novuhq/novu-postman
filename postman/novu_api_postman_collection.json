@@ -1928,7 +1928,7 @@
             "name": "Channel Connections",
             "item": [
                 {
-                    "name": "List channel connections",
+                    "name": "List all channel connections",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -2013,11 +2013,11 @@
                                 }
                             ]
                         },
-                        "description": "Retrieve all channel connections for a resource."
+                        "description": "List all channel connections for a resource."
                     }
                 },
                 {
-                    "name": "Create channel connection for a resource and integration",
+                    "name": "Create a channel connection",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -2055,7 +2055,7 @@
                     }
                 },
                 {
-                    "name": "Retrieve channel connection by identifier",
+                    "name": "Retrieve a channel connection",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -2092,7 +2092,7 @@
                     }
                 },
                 {
-                    "name": "Update channel connection",
+                    "name": "Update a channel connection",
                     "request": {
                         "method": "PATCH",
                         "header": [
@@ -2138,7 +2138,7 @@
                     }
                 },
                 {
-                    "name": "Delete channel connection",
+                    "name": "Delete a channel connection",
                     "request": {
                         "method": "DELETE",
                         "header": [
@@ -2180,7 +2180,7 @@
             "name": "Channel Endpoints",
             "item": [
                 {
-                    "name": "List channel endpoints",
+                    "name": "List all channel endpoints",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -2270,11 +2270,11 @@
                                 }
                             ]
                         },
-                        "description": "Retrieve all channel endpoints for a resource based on query filters."
+                        "description": "List all channel endpoints for a resource based on query filters."
                     }
                 },
                 {
-                    "name": "Create channel endpoint for a resource",
+                    "name": "Create a channel endpoint",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -2312,7 +2312,7 @@
                     }
                 },
                 {
-                    "name": "Retrieve channel endpoint by identifier",
+                    "name": "Retrieve a channel endpoint",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -2349,7 +2349,7 @@
                     }
                 },
                 {
-                    "name": "Update channel endpoint",
+                    "name": "Update a channel endpoint",
                     "request": {
                         "method": "PATCH",
                         "header": [
@@ -2395,7 +2395,7 @@
                     }
                 },
                 {
-                    "name": "Delete channel endpoint by identifier",
+                    "name": "Delete a channel endpoint",
                     "request": {
                         "method": "DELETE",
                         "header": [
@@ -2983,6 +2983,11 @@
                                 },
                                 {
                                     "key": "topicKey",
+                                    "value": "<value>",
+                                    "type": "string"
+                                },
+                                {
+                                    "key": "subscriptionId",
                                     "value": "<value>",
                                     "type": "string"
                                 },

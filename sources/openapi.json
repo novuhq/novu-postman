@@ -10135,16 +10135,13 @@ paths:
         - Topics
       security:
         - secretKey: []
-  /v2/topics/{topicKey}/subscriptions/{subscriptionIdOrIdentifier}:
-    patch:
-      operationId: TopicsController_updateTopicSubscription
-      x-speakeasy-name-override: update
+  /v2/topics/{topicKey}/subscriptions/{identifier}:
+    get:
+      operationId: TopicsController_getTopicSubscription
+      x-speakeasy-name-override: getSubscription
       x-speakeasy-group: Topics.Subscriptions
-      summary: Update a topic subscription
-      description: >-
-        Update a subscription by its unique identifier
-        **subscriptionIdOrIdentifier** for a topic. You can update the
-        preferences and name associated with the subscription.
+      summary: Get a topic subscription
+      description: Get a subscription by its unique identifier for a topic.
       parameters:
         - name: topicKey
           required: true
@@ -10152,7 +10149,327 @@ paths:
           description: The key identifier of the topic
           schema:
             type: string
-        - name: subscriptionIdOrIdentifier
+        - name: identifier
+          required: true
+          in: path
+          description: The unique identifier of the subscription
+          schema:
+            type: string
+        - name: idempotency-key
+          in: header
+          description: A header for idempotency purposes
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponseDto'
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '401':
+          description: Unauthorized
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '403':
+          description: Forbidden
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '404':
+          description: Not Found
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '405':
+          description: Method Not Allowed
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '409':
+          description: Conflict
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '413':
+          description: Payload Too Large
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '414':
+          description: URI Too Long
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '415':
+          description: Unsupported Media Type
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '422':
+          description: Unprocessable Entity
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorDto'
+        '429':
+          description: 'The client has sent too many requests in a given amount of time. '
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+            Retry-After:
+              $ref: '#/components/headers/Retry-After'
+          content:
+            application/json:
+              schema:
+                type: string
+                example: API rate limit exceeded
+        '500':
+          description: Internal Server Error
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '503':
+          description: >-
+            The server is currently unable to handle the request due to a
+            temporary overload or scheduled maintenance, which will likely be
+            alleviated after some delay.
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+            Retry-After:
+              $ref: '#/components/headers/Retry-After'
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Please wait some time, then try again.
+      tags:
+        - Topics
+      security:
+        - secretKey: []
+    patch:
+      operationId: TopicsController_updateTopicSubscription
+      x-speakeasy-name-override: update
+      x-speakeasy-group: Topics.Subscriptions
+      summary: Update a topic subscription
+      description: >-
+        Update a subscription by its unique identifier for a topic. You can
+        update the preferences and name associated with the subscription.
+      parameters:
+        - name: topicKey
+          required: true
+          in: path
+          description: The key identifier of the topic
+          schema:
+            type: string
+        - name: identifier
           required: true
           in: path
           description: The unique identifier of the subscription
@@ -13396,8 +13713,9 @@ paths:
   /v1/channel-connections:
     get:
       operationId: ChannelConnectionsController_listChannelConnections
-      summary: List channel connections
-      description: Retrieve all channel connections for a resource.
+      x-speakeasy-name-override: list
+      summary: List all channel connections
+      description: List all channel connections for a resource.
       parameters:
         - name: after
           required: false
@@ -13790,7 +14108,8 @@ paths:
         - secretKey: []
     post:
       operationId: ChannelConnectionsController_createChannelConnection
-      summary: Create channel connection for a resource and integration
+      x-speakeasy-name-override: create
+      summary: Create a channel connection
       description: >-
         Create a new channel connection for a resource for given integration.
         Only one channel connection is allowed per resource and integration.
@@ -14103,7 +14422,8 @@ paths:
   /v1/channel-connections/{identifier}:
     get:
       operationId: ChannelConnectionsController_getChannelConnectionByIdentifier
-      summary: Retrieve channel connection by identifier
+      x-speakeasy-name-override: retrieve
+      summary: Retrieve a channel connection
       description: Retrieve a specific channel connection by its unique identifier.
       parameters:
         - name: identifier
@@ -14413,7 +14733,8 @@ paths:
         - secretKey: []
     patch:
       operationId: ChannelConnectionsController_updateChannelConnection
-      summary: Update channel connection
+      x-speakeasy-name-override: update
+      summary: Update a channel connection
       description: Update an existing channel connection by its unique identifier.
       parameters:
         - name: identifier
@@ -14729,7 +15050,8 @@ paths:
         - secretKey: []
     delete:
       operationId: ChannelConnectionsController_deleteChannelConnection
-      summary: Delete channel connection
+      x-speakeasy-name-override: delete
+      summary: Delete a channel connection
       description: Delete a specific channel connection by its unique identifier.
       parameters:
         - name: identifier
@@ -15021,8 +15343,9 @@ paths:
   /v1/channel-endpoints:
     get:
       operationId: ChannelEndpointsController_listChannelEndpoints
-      summary: List channel endpoints
-      description: Retrieve all channel endpoints for a resource based on query filters.
+      x-speakeasy-name-override: list
+      summary: List all channel endpoints
+      description: List all channel endpoints for a resource based on query filters.
       parameters:
         - name: after
           required: false
@@ -15422,7 +15745,8 @@ paths:
         - secretKey: []
     post:
       operationId: ChannelEndpointsController_createChannelEndpoint
-      summary: Create channel endpoint for a resource
+      x-speakeasy-name-override: create
+      summary: Create a channel endpoint
       description: Create a new channel endpoint for a resource.
       parameters:
         - name: idempotency-key
@@ -15752,7 +16076,8 @@ paths:
   /v1/channel-endpoints/{identifier}:
     get:
       operationId: ChannelEndpointsController_getChannelEndpoint
-      summary: Retrieve channel endpoint by identifier
+      x-speakeasy-name-override: retrieve
+      summary: Retrieve a channel endpoint
       description: Retrieve a specific channel endpoint by its unique identifier.
       parameters:
         - name: identifier
@@ -16063,7 +16388,8 @@ paths:
         - secretKey: []
     patch:
       operationId: ChannelEndpointsController_updateChannelEndpoint
-      summary: Update channel endpoint
+      x-speakeasy-name-override: update
+      summary: Update a channel endpoint
       description: Update an existing channel endpoint by its unique identifier.
       parameters:
         - name: identifier
@@ -16380,7 +16706,8 @@ paths:
         - secretKey: []
     delete:
       operationId: ChannelEndpointsController_deleteChannelEndpoint
-      summary: Delete channel endpoint by identifier
+      x-speakeasy-name-override: delete
+      summary: Delete a channel endpoint
       description: Delete a specific channel endpoint by its unique identifier.
       parameters:
         - name: identifier
@@ -17928,7 +18255,7 @@ paths:
       summary: Trigger event
       description: |2-
 
-            Trigger event is the main (and only) way to send notifications to subscribers. The trigger identifier is used to match the particular workflow associated with it. Additional information can be passed according the body interface below.
+            Trigger event is the main (and only) way to send notifications to subscribers. The trigger identifier is used to match the particular workflow associated with it. Maximum number of recipients can be 100. Additional information can be passed according the body interface below.
             To prevent duplicate triggers, you can optionally pass a **transactionId** in the request body. If the same **transactionId** is used again, the trigger will be ignored. The retention period depends on your billing tier.
       parameters:
         - name: idempotency-key
@@ -22789,6 +23116,12 @@ paths:
           required: false
           in: query
           description: Topic Key for filtering notifications by topic
+          schema:
+            type: string
+        - name: subscriptionId
+          required: false
+          in: query
+          description: Subscription ID for filtering notifications by subscription
           schema:
             type: string
         - name: contextKeys
@@ -27778,7 +28111,9 @@ components:
           allOf:
             - $ref: '#/components/schemas/TriggerOverrides'
         to:
-          description: The recipients list of people who will receive the notification.
+          description: >-
+            The recipients list of people who will receive the notification.
+            Maximum number of recipients can be 100.
           oneOf:
             - type: array
               items:
@@ -28773,6 +29108,32 @@ components:
       required:
         - request
         - traces
+    TopicResponseDto:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: The identifier of the topic
+          example: 64da692e9a94fb2e6449ad06
+        key:
+          type: string
+          description: The unique key of the topic
+          example: product-updates
+        name:
+          type: string
+          description: The name of the topic
+          example: Product Updates
+        createdAt:
+          type: string
+          description: The date the topic was created
+          example: '2023-08-15T00:00:00.000Z'
+        updatedAt:
+          type: string
+          description: The date the topic was last updated
+          example: '2023-08-15T00:00:00.000Z'
+      required:
+        - _id
+        - key
     WorkflowRunStepsDetailsDto:
       type: object
       properties:
@@ -28874,6 +29235,11 @@ components:
           type: array
           items:
             type: string
+        topics:
+          description: Topics
+          type: array
+          items:
+            $ref: '#/components/schemas/TopicResponseDto'
         steps:
           description: Workflow run steps
           type: array
@@ -29067,6 +29433,11 @@ components:
           type: array
           items:
             type: string
+        topics:
+          description: Topics
+          type: array
+          items:
+            $ref: '#/components/schemas/TopicResponseDto'
         steps:
           description: Step runs
           type: array
@@ -29418,7 +29789,10 @@ components:
           description: Integration identifier
         connectionIdentifier:
           type: string
-          description: Identifier of the channel connection that will be created
+          description: >-
+            Identifier of the channel connection that will be created. It is
+            generated automatically if not provided.
+          example: slack-connection-abc123
         context:
           type: object
           additionalProperties:
@@ -30141,6 +30515,12 @@ components:
           type: boolean
           description: Indicates whether the notification has been seen by the subscriber.
           example: true
+        archived:
+          type: boolean
+          description: >-
+            Indicates whether the notification has been archived by the
+            subscriber.
+          example: false
         deviceTokens:
           nullable: true
           description: Device tokens for push notifications, if applicable.
@@ -30203,6 +30583,7 @@ components:
         - channel
         - read
         - seen
+        - archived
         - cta
         - status
     FeedResponseDto:
@@ -31283,32 +31664,6 @@ components:
           description: Subscriber schedule
           allOf:
             - $ref: '#/components/schemas/ScheduleDto'
-    TopicResponseDto:
-      type: object
-      properties:
-        _id:
-          type: string
-          description: The identifier of the topic
-          example: 64da692e9a94fb2e6449ad06
-        key:
-          type: string
-          description: The unique key of the topic
-          example: product-updates
-        name:
-          type: string
-          description: The name of the topic
-          example: Product Updates
-        createdAt:
-          type: string
-          description: The date the topic was created
-          example: '2023-08-15T00:00:00.000Z'
-        updatedAt:
-          type: string
-          description: The date the topic was last updated
-          example: '2023-08-15T00:00:00.000Z'
-      required:
-        - _id
-        - key
     SubscriberDto:
       type: object
       properties:
@@ -31350,6 +31705,10 @@ components:
           type: string
           description: The identifier of the subscription
           example: 64da692e9a94fb2e6449ad08
+        identifier:
+          type: string
+          description: The identifier of the subscription
+          example: tk=product-updates:si=subscriber-123
         createdAt:
           type: string
           description: The date and time the subscription was created
@@ -31364,6 +31723,7 @@ components:
             - $ref: '#/components/schemas/SubscriberDto'
       required:
         - _id
+        - identifier
         - createdAt
         - topic
         - subscriber
@@ -33792,7 +34152,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -33816,7 +34176,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -33840,7 +34200,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -33864,7 +34224,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -33888,7 +34248,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -33912,7 +34272,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -33936,7 +34296,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -33960,7 +34320,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -33984,7 +34344,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -34060,7 +34420,7 @@ components:
           default: false
         workflowId:
           type: string
-          pattern: /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
           description: Unique identifier for the workflow
         steps:
           type: array
@@ -34294,7 +34654,7 @@ components:
           description: Name of the workflow
         workflowId:
           type: string
-          pattern: /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
           description: Custom workflow identifier for the duplicated workflow
         tags:
           description: Tags associated with the workflow
