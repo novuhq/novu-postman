@@ -276,7 +276,7 @@
             "name": "Environments",
             "item": [
                 {
-                    "name": "Get environment tags",
+                    "name": "List environment tags",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -492,7 +492,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "\"<value>\""
+                            "raw": "{}"
                         },
                         "url": {
                             "raw": "{{baseUrl}}/v2/inbound-webhooks/delivery-providers/{environmentId}/{integrationId}",

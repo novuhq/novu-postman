@@ -1630,7 +1630,7 @@ paths:
     get:
       operationId: EnvironmentsController_getEnvironmentTags
       x-speakeasy-name-override: getTags
-      summary: Get environment tags
+      summary: List environment tags
       description: >-
         Retrieve all unique tags used in workflows within the specified
         environment. These tags can be used for filtering workflows.
@@ -1974,7 +1974,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/'
+              type: object
+              additionalProperties: true
+              description: Generic webhook payload from delivery providers
       responses:
         '200':
           description: Successfully processed webhook events
@@ -6173,6 +6175,16 @@ paths:
               - nonCritical
               - all
             type: string
+        - name: contextKeys
+          required: false
+          in: query
+          description: Context keys for filtering preferences (e.g., ["tenant:acme"])
+          example:
+            - tenant:acme
+          schema:
+            type: array
+            items:
+              type: string
         - name: idempotency-key
           in: header
           description: A header for idempotency purposes
@@ -7184,6 +7196,17 @@ paths:
           description: Filter by topic key
           schema:
             type: string
+        - name: contextKeys
+          required: false
+          in: query
+          description: 'Filter by exact context keys, order insensitive (format: "type:id")'
+          example:
+            - tenant:org-123
+            - region:us-east-1
+          schema:
+            type: array
+            items:
+              type: string
         - name: idempotency-key
           in: header
           description: A header for idempotency purposes
@@ -9198,6 +9221,17 @@ paths:
           description: Filter by subscriber ID
           schema:
             type: string
+        - name: contextKeys
+          required: false
+          in: query
+          description: 'Filter by exact context keys, order insensitive (format: "type:id")'
+          example:
+            - tenant:org-123
+            - region:us-east-1
+          schema:
+            type: array
+            items:
+              type: string
         - name: idempotency-key
           in: header
           description: A header for idempotency purposes
@@ -10140,8 +10174,8 @@ paths:
       operationId: TopicsController_getTopicSubscription
       x-speakeasy-name-override: getSubscription
       x-speakeasy-group: Topics.Subscriptions
-      summary: Get a topic subscription
-      description: Get a subscription by its unique identifier for a topic.
+      summary: Retrieve a topic subscription
+      description: Retrieve a subscription by its unique identifier for a topic.
       parameters:
         - name: topicKey
           required: true
@@ -10182,7 +10216,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubscriptionResponseDto'
+                $ref: '#/components/schemas/SubscriptionDetailsResponseDto'
         '400':
           description: Bad Request
           headers:
@@ -27319,7 +27353,7 @@ info:
   description: >-
     Novu REST API. Please see https://docs.novu.co/api-reference for more
     details.
-  version: 3.11.0
+  version: 3.13.0
   contact:
     name: Novu Support
     url: https://discord.gg/novu
@@ -30345,6 +30379,7 @@ components:
         payload:
           type: object
           description: Payload of the action result
+          additionalProperties: true
         type:
           $ref: '#/components/schemas/ButtonTypeEnum'
     MessageAction:
@@ -31130,9 +31165,11 @@ components:
         payload:
           type: object
           description: The payload that was used to send the notification trigger
+          additionalProperties: true
         overrides:
           type: object
           description: Provider specific overrides used when triggering the notification
+          additionalProperties: true
         contextKeys:
           description: Context (single or multi) in which the message was sent
           example:
@@ -31513,6 +31550,11 @@ components:
           description: Workflow information
           allOf:
             - $ref: '#/components/schemas/SubscriberPreferencesWorkflowInfoDto'
+        updatedAt:
+          type: string
+          description: >-
+            Timestamp when the subscriber last updated their preference. Only
+            present if subscriber explicitly set preferences.
       required:
         - enabled
         - channels
@@ -31646,6 +31688,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BulkUpdateSubscriberPreferenceItemDto'
+        context:
+          type: object
+          additionalProperties:
+            oneOf:
+              - type: string
+                description: Simple context id
+                example: org-acme
+              - type: object
+                description: Rich context object with id and optional data
+                properties:
+                  id:
+                    type: string
+                    example: org-acme
+                  data:
+                    type: object
+                    description: Optional additional context data
+                    additionalProperties: true
+                    example:
+                      name: Acme Corp
+                      region: us-east-1
+                required:
+                  - id
       required:
         - preferences
     PatchSubscriberPreferencesDto:
@@ -31664,6 +31728,28 @@ components:
           description: Subscriber schedule
           allOf:
             - $ref: '#/components/schemas/ScheduleDto'
+        context:
+          type: object
+          additionalProperties:
+            oneOf:
+              - type: string
+                description: Simple context id
+                example: org-acme
+              - type: object
+                description: Rich context object with id and optional data
+                properties:
+                  id:
+                    type: string
+                    example: org-acme
+                  data:
+                    type: object
+                    description: Optional additional context data
+                    additionalProperties: true
+                    example:
+                      name: Acme Corp
+                      region: us-east-1
+                required:
+                  - id
     SubscriberDto:
       type: object
       properties:
@@ -31721,6 +31807,16 @@ components:
           description: Subscriber information
           allOf:
             - $ref: '#/components/schemas/SubscriberDto'
+        contextKeys:
+          description: >-
+            Context keys that scope this subscription (e.g., tenant:org-a,
+            project:proj-123)
+          example:
+            - tenant:org-a
+            - project:proj-123
+          type: array
+          items:
+            type: string
       required:
         - _id
         - identifier
@@ -32418,6 +32514,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SubscriptionPreferenceDto'
+        contextKeys:
+          description: >-
+            Context keys that scope this subscription (e.g., tenant:org-a,
+            project:proj-123)
+          example:
+            - tenant:org-a
+            - project:proj-123
+          type: array
+          items:
+            type: string
         createdAt:
           type: string
           description: The creation date of the subscription
@@ -32608,6 +32714,28 @@ components:
           type: string
           description: The name of the topic
           example: My Topic
+        context:
+          type: object
+          additionalProperties:
+            oneOf:
+              - type: string
+                description: Simple context id
+                example: org-acme
+              - type: object
+                description: Rich context object with id and optional data
+                properties:
+                  id:
+                    type: string
+                    example: org-acme
+                  data:
+                    type: object
+                    description: Optional additional context data
+                    additionalProperties: true
+                    example:
+                      name: Acme Corp
+                      region: us-east-1
+                required:
+                  - id
         preferences:
           type: array
           description: >-
@@ -32644,6 +32772,16 @@ components:
           description: The subscriber information
           allOf:
             - $ref: '#/components/schemas/SubscriberDto'
+        contextKeys:
+          description: >-
+            Context keys that scope this subscription (e.g., tenant:org-a,
+            project:proj-123)
+          example:
+            - tenant:org-a
+            - project:proj-123
+          type: array
+          items:
+            type: string
         createdAt:
           type: string
           description: The creation date of the subscription
@@ -32743,6 +32881,38 @@ components:
               subscriberId: subscriber-123
             - subscriberId: subscriber-456
             - identifier: subscriber-789-subscription-b
+    SubscriptionDetailsResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the subscription
+          example: 64f5e95d3d7946d80d0cb679
+        identifier:
+          type: string
+          description: The identifier of the subscription
+          example: subscription-identifier
+        name:
+          type: string
+          description: The name of the subscription
+          example: My Subscription
+        preferences:
+          description: The preferences/rules for the subscription
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionPreferenceDto'
+        contextKeys:
+          description: >-
+            Context keys that scope this subscription (e.g., tenant:org-a,
+            project:proj-123)
+          example:
+            - tenant:org-a
+            - project:proj-123
+          type: array
+          items:
+            type: string
+      required:
+        - id
     UpdateTopicSubscriptionRequestDto:
       type: object
       properties:
@@ -34152,7 +34322,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_.][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -34176,7 +34346,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_.][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -34200,7 +34370,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_.][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -34224,7 +34394,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_.][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -34248,7 +34418,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_.][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -34272,7 +34442,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_.][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -34296,7 +34466,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_.][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -34320,7 +34490,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_.][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -34344,7 +34514,7 @@ components:
           description: Database identifier of the step. Used for updating the step.
         stepId:
           type: string
-          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_.][a-zA-Z0-9]+)*$/
           description: Unique identifier for the step
         name:
           type: string
@@ -34420,7 +34590,7 @@ components:
           default: false
         workflowId:
           type: string
-          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_.][a-zA-Z0-9]+)*$/
           description: Unique identifier for the workflow
         steps:
           type: array
@@ -34654,7 +34824,7 @@ components:
           description: Name of the workflow
         workflowId:
           type: string
-          pattern: /^[a-zA-Z0-9]+(?:[-_][a-zA-Z0-9]+)*$/
+          pattern: /^[a-zA-Z0-9]+(?:[-_.][a-zA-Z0-9]+)*$/
           description: Custom workflow identifier for the duplicated workflow
         tags:
           description: Tags associated with the workflow
@@ -36208,8 +36378,12 @@ components:
         object:
           type: object
           description: Current preference state
+        subscriberId:
+          type: string
+          description: Subscriber ID
       required:
         - object
+        - subscriberId
     WebhookMessageDtoWebhookPayloadWrapper:
       type: object
       properties:

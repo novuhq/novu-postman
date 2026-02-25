@@ -1,34 +1,34 @@
 lockVersion: 2.0.0
 id: 9a7be7b2-e0cf-42b0-b8dd-2d09c19f79fc
 management:
-  docChecksum: 28608544cc9b1b1298488f3394f061ce
-  docVersion: 3.11.0
-  speakeasyVersion: 1.682.0
-  generationVersion: 2.791.1
-  releaseVersion: 1.0.2
-  configChecksum: dad8456aae94de9f9a0ca05586b1e553
+  docChecksum: a56fcde262a0ef0d6ac6f8e4321b7954
+  docVersion: 3.13.0
+  speakeasyVersion: 1.728.0
+  generationVersion: 2.839.0
+  releaseVersion: 1.1.0
+  configChecksum: 93dfebb35db30ee95f6ba99a06a270cc
   repoURL: https://github.com/novuhq/novu-postman.git
   repoSubDirectory: postman
 persistentEdits:
-  generation_id: 301d3739-a254-459f-9fd5-b84816acdd25
-  pristine_commit_hash: cfbfbf5037dc434cdcf1e2251ff11b30ee3fee45
-  pristine_tree_hash: 2ec83795c67aecec21599399ed89547d981d6ec0
+  generation_id: c0e74476-cb6d-4efb-a79d-8691d0c5752d
+  pristine_commit_hash: 294424908915d0f7d45c4363b9ff985a2ca260b0
+  pristine_tree_hash: 0690b16e16205b4a5d32155109e03dd2f79c15f9
 features:
   postman:
-    constsAndDefaults: 0.1.0
-    core: 0.2.4
+    constsAndDefaults: 0.1.2
+    core: 0.2.7
     deprecations: 0.0.0
     examples: 0.1.1
-    globalSecurity: 0.1.3
+    globalSecurity: 0.1.4
     globalServerURLs: 0.1.1
     groups: 0.1.1
-    nameOverrides: 0.1.0
+    nameOverrides: 0.1.2
     retries: 0.0.0
 trackedFiles:
   novu_api_postman_collection.json:
     id: f80b59e13e5c
-    last_write_checksum: sha1:b8da10bfdb94a67099617eb8538a235eaa07b8de
-    pristine_git_object: 11474317aada4a1439ac96710d04c041ad8ebfc7
+    last_write_checksum: sha1:ea941d162310718c65d1a4b24efef3cc4ddc92d5
+    pristine_git_object: c4a070ae8622e4c7f5c198b2960040892d24cefc
 examples:
   EventsController_trigger:
     speakeasy-default-events-controller-trigger:
@@ -320,7 +320,7 @@ examples:
           environmentId: "<id>"
           integrationId: "<id>"
       requestBody:
-        application/json: "<value>"
+        application/json: {}
       responses:
         "200":
           application/json: [{"id": "<id>", "event": {"status": "rejected", "date": "2024-05-16"}}]
@@ -617,6 +617,7 @@ examples:
           subscriberId: "<id>"
         query:
           criticality: "nonCritical"
+          contextKeys: ["tenant:acme"]
       responses:
         "200":
           application/json: {"global": {"enabled": false, "channels": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "schedule": {"isEnabled": true, "weeklySchedule": {"monday": {"isEnabled": true, "hours": [{"start": "09:00 AM", "end": "05:00 PM"}]}, "tuesday": {"isEnabled": true, "hours": [{"start": "09:00 AM", "end": "05:00 PM"}]}, "wednesday": {"isEnabled": true, "hours": [{"start": "09:00 AM", "end": "05:00 PM"}]}, "thursday": {"isEnabled": true, "hours": [{"start": "09:00 AM", "end": "05:00 PM"}]}, "friday": {"isEnabled": true, "hours": [{"start": "09:00 AM", "end": "05:00 PM"}]}, "saturday": {"isEnabled": true, "hours": [{"start": "09:00 AM", "end": "05:00 PM"}]}, "sunday": {"isEnabled": true, "hours": [{"start": "09:00 AM", "end": "05:00 PM"}]}}}}, "workflows": [{"enabled": false, "channels": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "overrides": [{"channel": "sms", "source": "subscriber"}], "workflow": {"slug": "<value>", "identifier": "<value>", "name": "<value>"}}]}
@@ -683,6 +684,7 @@ examples:
           subscriberId: "<id>"
         query:
           limit: 10
+          contextKeys: ["tenant:org-123", "region:us-east-1"]
       responses:
         "200":
           application/json: {"data": [{"_id": "64da692e9a94fb2e6449ad08", "identifier": "tk=product-updates:si=subscriber-123", "createdAt": "2021-01-01T00:00:00.000Z", "topic": {"_id": "64da692e9a94fb2e6449ad06", "key": "product-updates", "name": "Product Updates", "createdAt": "2023-08-15T00:00:00.000Z", "updatedAt": "2023-08-15T00:00:00.000Z"}, "subscriber": {"_id": "64da692e9a94fb2e6449ad07", "subscriberId": "user-123", "avatar": "https://example.com/avatar.png", "firstName": "John", "lastName": "Doe", "email": "john@example.com"}}], "next": "<value>", "previous": "<value>", "totalCount": 2140.37, "totalCountCapped": true}
@@ -1008,6 +1010,7 @@ examples:
           topicKey: "<value>"
         query:
           limit: 10
+          contextKeys: ["tenant:org-123", "region:us-east-1"]
       responses:
         "200":
           application/json: {"data": [], "next": "<value>", "previous": "<value>", "totalCount": 4830.71, "totalCountCapped": true}
@@ -1079,7 +1082,7 @@ examples:
         application/json: {"name": "My Subscription", "preferences": [{"workflowId": "workflow-123", "condition": {"===": [{"var": "tier"}, "premium"]}}]}
       responses:
         "200":
-          application/json: {"_id": "64f5e95d3d7946d80d0cb679", "identifier": "tk=product-updates:si=subscriber-123", "name": "My Subscription", "topic": {"_id": "64f5e95d3d7946d80d0cb677", "key": "product-updates", "name": "Product Updates"}, "subscriber": {"_id": "64da692e9a94fb2e6449ad07", "subscriberId": "user-123", "avatar": "https://example.com/avatar.png", "firstName": "John", "lastName": "Doe", "email": "john@example.com"}, "preferences": [{"subscriptionId": "64f5e95d3d7946d80d0cb679", "workflow": {"id": "64a1b2c3d4e5f6g7h8i9j0k1", "identifier": "welcome-email", "name": "Welcome Email Workflow", "critical": false, "tags": ["user-onboarding", "email"], "data": {}, "severity": "medium"}, "enabled": true, "condition": {"and": [{"===": [{"var": "tier"}, "premium"]}]}}], "createdAt": "2025-04-24T05:40:21Z", "updatedAt": "2025-04-24T05:40:21Z"}
+          application/json: {"_id": "64f5e95d3d7946d80d0cb679", "identifier": "tk=product-updates:si=subscriber-123", "name": "My Subscription", "topic": {"_id": "64f5e95d3d7946d80d0cb677", "key": "product-updates", "name": "Product Updates"}, "subscriber": {"_id": "64da692e9a94fb2e6449ad07", "subscriberId": "user-123", "avatar": "https://example.com/avatar.png", "firstName": "John", "lastName": "Doe", "email": "john@example.com"}, "preferences": [{"subscriptionId": "64f5e95d3d7946d80d0cb679", "workflow": {"id": "64a1b2c3d4e5f6g7h8i9j0k1", "identifier": "welcome-email", "name": "Welcome Email Workflow", "critical": false, "tags": ["user-onboarding", "email"], "data": {}, "severity": "medium"}, "enabled": true, "condition": {"and": [{"===": [{"var": "tier"}, "premium"]}]}}], "contextKeys": ["tenant:org-a", "project:proj-123"], "createdAt": "2025-04-24T05:40:21Z", "updatedAt": "2025-04-24T05:40:21Z"}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -1817,7 +1820,7 @@ examples:
           identifier: "<value>"
       responses:
         "200":
-          application/json: {"_id": "64f5e95d3d7946d80d0cb679", "identifier": "tk=product-updates:si=subscriber-123", "name": "My Subscription", "topic": {"_id": "64f5e95d3d7946d80d0cb677", "key": "product-updates", "name": "Product Updates"}, "subscriber": {"_id": "64da692e9a94fb2e6449ad07", "subscriberId": "user-123", "avatar": "https://example.com/avatar.png", "firstName": "John", "lastName": "Doe", "email": "john@example.com"}, "preferences": [{"subscriptionId": "64f5e95d3d7946d80d0cb679", "workflow": {"id": "64a1b2c3d4e5f6g7h8i9j0k1", "identifier": "welcome-email", "name": "Welcome Email Workflow", "critical": false, "tags": ["user-onboarding", "email"], "data": {}, "severity": "none"}, "enabled": true, "condition": {"and": [{"===": [{"var": "tier"}, "premium"]}]}}], "createdAt": "2025-04-24T05:40:21Z", "updatedAt": "2025-04-24T05:40:21Z"}
+          application/json: {"id": "64f5e95d3d7946d80d0cb679", "identifier": "tk=product-updates:si=subscriber-123", "name": "My Subscription", "preferences": [{"subscriptionId": "64f5e95d3d7946d80d0cb679", "workflow": {"id": "64a1b2c3d4e5f6g7h8i9j0k1", "identifier": "welcome-email", "name": "Welcome Email Workflow", "critical": false, "tags": ["user-onboarding", "email"], "data": {}, "severity": "none"}, "enabled": true, "condition": {"and": [{"===": [{"var": "tier"}, "premium"]}]}}], "contextKeys": ["tenant:org-a", "project:proj-123"]}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -1831,6 +1834,5 @@ examples:
         "503":
           application/json: "Please wait some time, then try again."
 examplesVersion: 1.0.2
-releaseNotes: "## Postman SDK Changes:\n* `Novu.Topics.Subscriptions.update()`:  `request` **Changed** **Breaking** :warning:\n* `Novu.Topics.Subscriptions.getSubscription()`: **Added**\n* `Novu.Subscribers.Topics.list()`:  `response.data.[].identifier` **Added**\n* `Novu.Subscribers.Notifications.feed()`:  `response.data.[].archived` **Added**\n* `Novu.Topics.Subscriptions.list()`:  `response.data.[].identifier` **Added**\n* `Novu.Notifications.list()`: \n  *  `request.subscriptionId` **Added**\n"
 generatedFiles:
   - novu_api_postman_collection.json
