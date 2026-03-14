@@ -1,34 +1,35 @@
 lockVersion: 2.0.0
 id: 9a7be7b2-e0cf-42b0-b8dd-2d09c19f79fc
 management:
-  docChecksum: a56fcde262a0ef0d6ac6f8e4321b7954
-  docVersion: 3.13.0
-  speakeasyVersion: 1.728.0
-  generationVersion: 2.839.0
-  releaseVersion: 1.1.0
-  configChecksum: 93dfebb35db30ee95f6ba99a06a270cc
+  docChecksum: 05e9b1aca4c1fce3617dea4400898a87
+  docVersion: 3.14.0
+  speakeasyVersion: 1.755.0
+  generationVersion: 2.865.2
+  releaseVersion: 1.2.0
+  configChecksum: 6d991edca4075a52b83e12df2dbfa402
   repoURL: https://github.com/novuhq/novu-postman.git
   repoSubDirectory: postman
+  installationURL: https://github.com/novuhq/novu-postman
 persistentEdits:
-  generation_id: c0e74476-cb6d-4efb-a79d-8691d0c5752d
-  pristine_commit_hash: 294424908915d0f7d45c4363b9ff985a2ca260b0
-  pristine_tree_hash: 0690b16e16205b4a5d32155109e03dd2f79c15f9
+  generation_id: e947e049-ed6a-4ff8-b1dc-3135f6084aad
+  pristine_commit_hash: f4e634b6cbd5e6efe1a2e428bbcb578fe94e2aa8
+  pristine_tree_hash: eb9da097ef4b85e780a13baefda7885b6af274dc
 features:
   postman:
     constsAndDefaults: 0.1.2
-    core: 0.2.7
+    core: 0.2.11
     deprecations: 0.0.0
-    examples: 0.1.1
+    examples: 0.1.2
     globalSecurity: 0.1.4
-    globalServerURLs: 0.1.1
+    globalServerURLs: 0.1.2
     groups: 0.1.1
     nameOverrides: 0.1.2
     retries: 0.0.0
 trackedFiles:
   novu_api_postman_collection.json:
     id: f80b59e13e5c
-    last_write_checksum: sha1:ea941d162310718c65d1a4b24efef3cc4ddc92d5
-    pristine_git_object: c4a070ae8622e4c7f5c198b2960040892d24cefc
+    last_write_checksum: sha1:546885a93088d261fe3ba96b9d13a80b2506e22d
+    pristine_git_object: da1bb3cfe2efa3457e4e797c86acfbedab5b211f
 examples:
   EventsController_trigger:
     speakeasy-default-events-controller-trigger:
@@ -330,7 +331,7 @@ examples:
         application/json: {"layoutId": "<id>", "name": "<value>", "isTranslationEnabled": false, "__source": "dashboard"}
       responses:
         "201":
-          application/json: {"_id": "<id>", "layoutId": "<id>", "slug": "<value>", "name": "<value>", "isDefault": true, "isTranslationEnabled": false, "updatedAt": "1735674274664", "createdAt": "1724722350004", "origin": "external", "type": "BRIDGE", "controls": {"values": {}}}
+          application/json: {"_id": "<id>", "layoutId": "<id>", "slug": "<value>", "name": "<value>", "isDefault": true, "isTranslationEnabled": false, "updatedAt": "1735674274664", "createdAt": "1724722350004", "origin": "external", "type": "BRIDGE", "controls": {"values": {"email": {"body": "<value>", "editorType": "html"}}}}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -351,7 +352,7 @@ examples:
           offset: 0
       responses:
         "200":
-          application/json: {"layouts": [{"_id": "<id>", "layoutId": "<id>", "slug": "<value>", "name": "<value>", "isDefault": false, "isTranslationEnabled": true, "updatedAt": "1735681034060", "createdAt": "1725690003700", "origin": "novu-cloud-v1", "type": "BRIDGE", "controls": {"values": {}}}], "totalCount": 2739.33}
+          application/json: {"layouts": [{"_id": "<id>", "layoutId": "<id>", "slug": "<value>", "name": "<value>", "isDefault": false, "isTranslationEnabled": true, "updatedAt": "1735681034060", "createdAt": "1725690003700", "origin": "novu-cloud-v1", "type": "BRIDGE", "controls": {"values": {"email": {"body": "<value>", "editorType": "block"}}}}], "totalCount": 2739.33}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -370,10 +371,10 @@ examples:
         path:
           layoutId: "<id>"
       requestBody:
-        application/json: {"name": "<value>", "isTranslationEnabled": false}
+        application/json: {"name": "<value>", "isTranslationEnabled": false, "controlValues": {"email": {"body": "<value>", "editorType": "html"}}}
       responses:
         "200":
-          application/json: {"_id": "<id>", "layoutId": "<id>", "slug": "<value>", "name": "<value>", "isDefault": true, "isTranslationEnabled": true, "updatedAt": "1735626712855", "createdAt": "1721640680654", "origin": "external", "type": "ECHO", "controls": {"values": {}}}
+          application/json: {"_id": "<id>", "layoutId": "<id>", "slug": "<value>", "name": "<value>", "isDefault": true, "isTranslationEnabled": true, "updatedAt": "1735626712855", "createdAt": "1721640680654", "origin": "external", "type": "ECHO", "controls": {"values": {"email": {"body": "<value>", "editorType": "html"}}}}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -393,7 +394,7 @@ examples:
           layoutId: "<id>"
       responses:
         "200":
-          application/json: {"_id": "<id>", "layoutId": "<id>", "slug": "<value>", "name": "<value>", "isDefault": false, "isTranslationEnabled": false, "updatedAt": "1735667479798", "createdAt": "1732982999986", "origin": "novu-cloud-v1", "type": "BRIDGE", "controls": {"values": {}}}
+          application/json: {"_id": "<id>", "layoutId": "<id>", "slug": "<value>", "name": "<value>", "isDefault": false, "isTranslationEnabled": false, "updatedAt": "1735667479798", "createdAt": "1732982999986", "origin": "novu-cloud-v1", "type": "BRIDGE", "controls": {"values": {"email": {"body": "<value>", "editorType": "block"}}}}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -433,7 +434,7 @@ examples:
         application/json: {"name": "<value>", "isTranslationEnabled": false}
       responses:
         "201":
-          application/json: {"_id": "<id>", "layoutId": "<id>", "slug": "<value>", "name": "<value>", "isDefault": true, "isTranslationEnabled": true, "updatedAt": "1735605867320", "createdAt": "1709332117452", "origin": "external", "type": "BRIDGE", "controls": {"values": {}}}
+          application/json: {"_id": "<id>", "layoutId": "<id>", "slug": "<value>", "name": "<value>", "isDefault": true, "isTranslationEnabled": true, "updatedAt": "1735605867320", "createdAt": "1709332117452", "origin": "external", "type": "BRIDGE", "controls": {"values": {"email": {"body": "<value>", "editorType": "html"}}}}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -452,10 +453,10 @@ examples:
         path:
           layoutId: "<id>"
       requestBody:
-        application/json: {"previewPayload": {"subscriber": {"channels": [{"providerId": "mattermost", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}]}}}
+        application/json: {"previewPayload": {"subscriber": {"firstName": "Marion", "lastName": "Kirlin", "channels": [{"providerId": "mattermost", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "isOnline": false, "lastOnlineAt": "<value>"}}}
       responses:
         "201":
-          application/json: {"previewPayloadExample": {"subscriber": {"channels": [{"providerId": "mattermost", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}]}}, "result": "<value>"}
+          application/json: {"previewPayloadExample": {"subscriber": {"firstName": "Marion", "lastName": "Kirlin", "channels": [{"providerId": "mattermost", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "isOnline": false, "lastOnlineAt": "<value>"}}, "result": "<value>"}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -495,7 +496,7 @@ examples:
           limit: 10
       responses:
         "200":
-          application/json: {"data": [{"channels": [{"providerId": "apns", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": false, "createdAt": "1721320696955", "updatedAt": "1735657113100"}], "next": "<value>", "previous": "<value>", "totalCount": 631.49, "totalCountCapped": true}
+          application/json: {"data": [{"firstName": "Maegan", "lastName": "Muller", "channels": [{"providerId": "apns", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "isOnline": true, "lastOnlineAt": null, "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": false, "createdAt": "1721320696955", "updatedAt": "1735657113100"}], "next": "<value>", "previous": "<value>", "totalCount": 631.49, "totalCountCapped": true}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -514,9 +515,9 @@ examples:
         application/json: {"firstName": "John", "lastName": "Doe", "email": "john.doe@example.com", "phone": "+1234567890", "avatar": "https://example.com/avatar.jpg", "locale": "en-US", "timezone": "America/New_York", "subscriberId": "<id>"}
       responses:
         "201":
-          application/json: {"channels": [{"providerId": "novu-slack", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1714911393177", "updatedAt": "1735631466004"}
+          application/json: {"firstName": "Eli", "lastName": "Senger", "channels": [{"providerId": "novu-slack", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "isOnline": true, "lastOnlineAt": "<value>", "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1714911393177", "updatedAt": "1735631466004"}
         "409":
-          application/json: {"channels": [{"providerId": "novu-slack", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1714911393177", "updatedAt": "1735631466004"}
+          application/json: {"firstName": "Eli", "lastName": "Senger", "channels": [{"providerId": "novu-slack", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "isOnline": true, "lastOnlineAt": "<value>", "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1714911393177", "updatedAt": "1735631466004"}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -536,7 +537,7 @@ examples:
           subscriberId: "<id>"
       responses:
         "200":
-          application/json: {"channels": [{"providerId": "mattermost", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1706966861276", "updatedAt": "1735666659331"}
+          application/json: {"firstName": "Ali", "lastName": null, "channels": [{"providerId": "mattermost", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "isOnline": true, "lastOnlineAt": "<value>", "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1706966861276", "updatedAt": "1735666659331"}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -558,7 +559,7 @@ examples:
         application/json: {"firstName": "John", "lastName": "Doe", "email": "john.doe@example.com", "phone": "+1234567890", "avatar": "https://example.com/avatar.jpg", "locale": "en-US", "timezone": "America/New_York"}
       responses:
         "200":
-          application/json: {"channels": [{"providerId": "rocket-chat", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": false, "createdAt": "1730468597075", "updatedAt": "1735680834942"}
+          application/json: {"firstName": "Lenore", "lastName": "Schuster", "channels": [{"providerId": "rocket-chat", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "isOnline": false, "lastOnlineAt": "<value>", "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": false, "createdAt": "1730468597075", "updatedAt": "1735680834942"}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -706,10 +707,10 @@ examples:
         path:
           subscriberId: "<id>"
       requestBody:
-        application/json: {"providerId": "slack", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}}
+        application/json: {"providerId": "slack", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}}
       responses:
         "200":
-          application/json: {"channels": [{"providerId": "pusher-beams", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1734450276517", "updatedAt": "1735647850570"}
+          application/json: {"firstName": null, "lastName": "Willms", "channels": [{"providerId": "pusher-beams", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "isOnline": true, "lastOnlineAt": null, "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1734450276517", "updatedAt": "1735647850570"}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -728,10 +729,10 @@ examples:
         path:
           subscriberId: "<id>"
       requestBody:
-        application/json: {"providerId": "one-signal", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}}
+        application/json: {"providerId": "one-signal", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}}
       responses:
         "200":
-          application/json: {"channels": [{"providerId": "push-webhook", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1723644002415", "updatedAt": "1735683720772"}
+          application/json: {"firstName": "Rylan", "lastName": "Waters", "channels": [{"providerId": "push-webhook", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "isOnline": null, "lastOnlineAt": "<value>", "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1723644002415", "updatedAt": "1735683720772"}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -774,7 +775,7 @@ examples:
         application/json: {"status": "pending"}
       responses:
         "201":
-          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "_notificationId": "<id>", "_subscriberId": "<id>", "subscriber": {"channels": [{"providerId": "novu-slack", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1721094948193", "updatedAt": "1735642049317"}, "template": {"name": "<value>", "description": "ouch imaginary merrily triumphantly ouch questionably deafening", "active": false, "draft": true, "preferenceSettings": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "critical": true, "tags": ["<value 1>"], "steps": [], "_organizationId": "<id>", "_creatorId": "<id>", "_environmentId": "<id>", "triggers": [{"type": "event", "identifier": "<value>", "variables": [{"name": "<value>"}]}], "_notificationGroupId": "<id>", "deleted": false, "deletedAt": "<value>", "deletedBy": "<value>"}, "createdAt": "1715588853108", "transactionId": "<id>", "channel": "email", "read": false, "seen": true, "cta": {}, "status": "warning", "contextKeys": ["tenant:org-123", "region:us-east-1"]}
+          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "_notificationId": "<id>", "_subscriberId": "<id>", "subscriber": {"firstName": "Kody", "lastName": "Kirlin", "channels": [{"providerId": "novu-slack", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "isOnline": false, "lastOnlineAt": "<value>", "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1721094948193", "updatedAt": "1735642049317"}, "template": {"name": "<value>", "description": "ouch imaginary merrily triumphantly ouch questionably deafening", "active": false, "draft": true, "preferenceSettings": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "critical": true, "tags": ["<value 1>"], "steps": [], "_organizationId": "<id>", "_creatorId": "<id>", "_environmentId": "<id>", "triggers": [{"type": "event", "identifier": "<value>", "variables": [{"name": "<value>"}]}], "_notificationGroupId": "<id>", "deleted": false, "deletedAt": "<value>", "deletedBy": "<value>"}, "createdAt": "1715588853108", "transactionId": "<id>", "channel": "email", "read": false, "seen": true, "cta": {}, "status": "warning", "contextKeys": ["tenant:org-123", "region:us-east-1"]}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -818,7 +819,7 @@ examples:
         application/json: {"messageId": "<id>", "markAs": "unread"}
       responses:
         "201":
-          application/json: [{"_environmentId": "<id>", "_organizationId": "<id>", "_notificationId": "<id>", "_subscriberId": "<id>", "subscriber": {"channels": [{"providerId": "discord", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1732235174184", "updatedAt": "1735688399780"}, "template": {"name": "<value>", "description": "sternly coexist oxidize defendant allegation grouper beside once portly gracefully", "active": false, "draft": true, "preferenceSettings": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "critical": true, "tags": ["<value 1>"], "steps": [], "_organizationId": "<id>", "_creatorId": "<id>", "_environmentId": "<id>", "triggers": [{"type": "event", "identifier": "<value>", "variables": [{"name": "<value>"}]}], "_notificationGroupId": "<id>", "deleted": false, "deletedAt": "<value>", "deletedBy": "<value>"}, "createdAt": "1722216227261", "transactionId": "<id>", "channel": "chat", "read": false, "seen": false, "cta": {}, "status": "warning", "contextKeys": ["tenant:org-123", "region:us-east-1"]}]
+          application/json: [{"_environmentId": "<id>", "_organizationId": "<id>", "_notificationId": "<id>", "_subscriberId": "<id>", "subscriber": {"firstName": "Autumn", "lastName": "Yost", "channels": [{"providerId": "discord", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "isOnline": false, "lastOnlineAt": "<value>", "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": true, "createdAt": "1732235174184", "updatedAt": "1735688399780"}, "template": {"name": "<value>", "description": "sternly coexist oxidize defendant allegation grouper beside once portly gracefully", "active": false, "draft": true, "preferenceSettings": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "critical": true, "tags": ["<value 1>"], "steps": [], "_organizationId": "<id>", "_creatorId": "<id>", "_environmentId": "<id>", "triggers": [{"type": "event", "identifier": "<value>", "variables": [{"name": "<value>"}]}], "_notificationGroupId": "<id>", "deleted": false, "deletedAt": "<value>", "deletedBy": "<value>"}, "createdAt": "1722216227261", "transactionId": "<id>", "channel": "chat", "read": false, "seen": false, "cta": {}, "status": "warning", "contextKeys": ["tenant:org-123", "region:us-east-1"]}]
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -887,7 +888,7 @@ examples:
         application/json: {"isOnline": false}
       responses:
         "200":
-          application/json: {"channels": [{"providerId": "novu-slack", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": false, "createdAt": "1731299906743", "updatedAt": "1735687676708"}
+          application/json: {"firstName": "Larry", "lastName": "Wolff", "channels": [{"providerId": "novu-slack", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "isOnline": true, "lastOnlineAt": null, "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": false, "createdAt": "1731299906743", "updatedAt": "1735687676708"}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -1353,7 +1354,7 @@ examples:
     speakeasy-default-integrations-controller-list-integrations:
       responses:
         "200":
-          application/json: [{"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "email", "credentials": {}, "active": false, "deleted": true, "primary": false}]
+          application/json: [{"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "email", "credentials": {}, "configurations": {}, "active": false, "deleted": true, "primary": false}]
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -1372,7 +1373,7 @@ examples:
         application/json: {"providerId": "<id>", "channel": "email"}
       responses:
         "201":
-          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "chat", "credentials": {}, "active": false, "deleted": false, "primary": true}
+          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "chat", "credentials": {}, "configurations": {}, "active": false, "deleted": false, "primary": true}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -1394,7 +1395,7 @@ examples:
         application/json: {}
       responses:
         "200":
-          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "push", "credentials": {}, "active": false, "deleted": false, "primary": true}
+          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "push", "credentials": {}, "configurations": {}, "active": false, "deleted": false, "primary": true}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -1414,7 +1415,7 @@ examples:
           integrationId: "<id>"
       responses:
         "200":
-          application/json: [{"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "sms", "credentials": {}, "active": false, "deleted": true, "primary": false}]
+          application/json: [{"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "sms", "credentials": {}, "configurations": {}, "active": false, "deleted": true, "primary": false}]
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -1454,7 +1455,7 @@ examples:
           integrationId: "<id>"
       responses:
         "200":
-          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "in_app", "credentials": {}, "active": false, "deleted": false, "primary": false}
+          application/json: {"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "in_app", "credentials": {}, "configurations": {}, "active": false, "deleted": false, "primary": false}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -1471,7 +1472,7 @@ examples:
     speakeasy-default-integrations-controller-get-active-integrations:
       responses:
         "200":
-          application/json: [{"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "chat", "credentials": {}, "active": false, "deleted": false, "primary": false}]
+          application/json: [{"_environmentId": "<id>", "_organizationId": "<id>", "name": "<value>", "identifier": "<value>", "providerId": "<id>", "channel": "chat", "credentials": {}, "configurations": {}, "active": false, "deleted": false, "primary": false}]
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -1493,7 +1494,7 @@ examples:
           limit: 10
       responses:
         "200":
-          application/json: {"hasMore": true, "data": [{"_environmentId": "<id>", "_organizationId": "<id>", "_notificationId": "<id>", "_subscriberId": "<id>", "subscriber": {"channels": [{"providerId": "push-webhook", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": false, "createdAt": "1705696362384", "updatedAt": "1735644691874"}, "template": {"name": "<value>", "description": "incidentally skyline yum ugh er bowler inspection", "active": false, "draft": true, "preferenceSettings": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "critical": false, "tags": [], "steps": [], "_organizationId": "<id>", "_creatorId": "<id>", "_environmentId": "<id>", "triggers": [{"type": "event", "identifier": "<value>", "variables": []}], "_notificationGroupId": "<id>", "deleted": false, "deletedAt": "<value>", "deletedBy": "<value>"}, "createdAt": "1727132780159", "transactionId": "<id>", "channel": "in_app", "read": false, "seen": false, "cta": {}, "status": "error", "contextKeys": ["tenant:org-123", "region:us-east-1"]}], "pageSize": 59.5, "page": 1363.57}
+          application/json: {"hasMore": true, "data": [{"_environmentId": "<id>", "_organizationId": "<id>", "_notificationId": "<id>", "_subscriberId": "<id>", "subscriber": {"firstName": "Reymundo", "lastName": "Beatty", "channels": [{"providerId": "push-webhook", "integrationIdentifier": "<value>", "credentials": {"webhookUrl": "https://example.com/webhook", "channel": "general", "deviceTokens": ["token1", "token2", "token3"], "alertUid": "12345-abcde", "title": "Critical Alert", "imageUrl": "https://example.com/image.png", "state": "resolved", "externalUrl": "https://example.com/details"}, "_integrationId": "<id>"}], "isOnline": false, "lastOnlineAt": null, "subscriberId": "<id>", "_organizationId": "<id>", "_environmentId": "<id>", "deleted": false, "createdAt": "1705696362384", "updatedAt": "1735644691874"}, "template": {"name": "<value>", "description": "incidentally skyline yum ugh er bowler inspection", "active": false, "draft": true, "preferenceSettings": {"email": true, "sms": false, "in_app": true, "chat": false, "push": true}, "critical": false, "tags": [], "steps": [], "_organizationId": "<id>", "_creatorId": "<id>", "_environmentId": "<id>", "triggers": [{"type": "event", "identifier": "<value>", "variables": []}], "_notificationGroupId": "<id>", "deleted": false, "deletedAt": "<value>", "deletedBy": "<value>"}, "createdAt": "1727132780159", "transactionId": "<id>", "channel": "in_app", "read": false, "seen": false, "cta": {}, "status": "error", "contextKeys": ["tenant:org-123", "region:us-east-1"]}], "pageSize": 59.5, "page": 1363.57}
         "414":
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "400":
@@ -1833,6 +1834,51 @@ examples:
           application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
         "503":
           application/json: "Please wait some time, then try again."
+  EnvironmentsController_diffEnvironment:
+    speakeasy-default-environments-controller-diff-environment:
+      parameters:
+        path:
+          targetEnvironmentId: "6615943e7ace93b0540ae377"
+      requestBody:
+        application/json: {"sourceEnvironmentId": "507f1f77bcf86cd799439011"}
+      responses:
+        "200":
+          application/json: {"sourceEnvironmentId": "<id>", "targetEnvironmentId": "<id>", "resources": [{"resourceType": "BRIDGE", "sourceResource": {"updatedAt": "2024-01-15T10:30:00.000Z"}, "targetResource": {"updatedAt": "2024-01-15T10:30:00.000Z"}, "changes": [{"sourceResource": {"updatedAt": "2024-01-15T10:30:00.000Z"}, "targetResource": {"updatedAt": "2024-01-15T10:30:00.000Z"}, "resourceType": "ECHO", "action": "deleted"}], "summary": {"added": 4536.9, "modified": 4715.06, "deleted": 7919.8, "unchanged": 7466.34}}], "summary": {"totalEntities": 2495.22, "totalChanges": 5911.44, "hasChanges": true}}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {"key": "value"}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "429":
+          application/json: "API rate limit exceeded"
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "503":
+          application/json: "Please wait some time, then try again."
+  EnvironmentsController_publishEnvironment:
+    speakeasy-default-environments-controller-publish-environment:
+      parameters:
+        path:
+          targetEnvironmentId: "6615943e7ace93b0540ae377"
+      requestBody:
+        application/json: {"sourceEnvironmentId": "507f1f77bcf86cd799439011", "dryRun": false, "resources": [{"resourceType": "REGULAR", "resourceId": "workflow-id-1"}]}
+      responses:
+        "200":
+          application/json: {"results": [{"resourceType": "REGULAR", "successful": [], "failed": [{"resourceType": "ECHO", "resourceId": "<id>", "resourceName": "<value>", "error": "<value>"}], "skipped": [{"resourceType": "BRIDGE", "resourceId": "<id>", "resourceName": "<value>", "reason": "<value>"}], "totalProcessed": 3977.33}], "summary": {"resources": 1548.2, "successful": 1186.4, "failed": 5607.1, "skipped": 8053.79}}
+        "414":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "400":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "422":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123", "errors": {"fieldName1": {"messages": ["Field is required", "Must be a valid email address"], "value": "invalidEmail"}, "fieldName2": {"messages": ["Must be at least 18 years old"], "value": 17}, "fieldName3": {"messages": ["Must be a boolean value"], "value": true}, "fieldName4": {"messages": ["Must be a valid object"], "value": {"key": "value"}}, "fieldName5": {"messages": ["Field is missing"], "value": null}, "fieldName6": {"messages": ["Undefined value"]}}}
+        "429":
+          application/json: "API rate limit exceeded"
+        "500":
+          application/json: {"statusCode": 404, "timestamp": "2024-12-12T13:00:00Z", "path": "/api/v1/resource", "message": "xx xx xx ", "ctx": {"workflowId": "some_wf_id", "stepId": "some_wf_id"}, "errorId": "abc123"}
+        "503":
+          application/json: "Please wait some time, then try again."
 examplesVersion: 1.0.2
+releaseNotes: "## Postman SDK Changes:\n* `Novu.Workflows.sync()`:  `response.issues.Map<RuntimeIssueDto>` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.patch()`:  `response.issues.Map<RuntimeIssueDto>` **Changed** (Breaking ⚠️)\n* `Novu.Layouts.create()`:  `response.controls` **Changed** (Breaking ⚠️)\n* `Novu.Layouts.list()`:  `response.layouts[].controls` **Changed** (Breaking ⚠️)\n* `Novu.Layouts.update()`: \n  *  `request.UpdateLayoutDto.controlValues` **Changed** (Breaking ⚠️)\n  *  `response.controls` **Changed** (Breaking ⚠️)\n* `Novu.Layouts.retrieve()`:  `response.controls` **Changed** (Breaking ⚠️)\n* `Novu.Layouts.duplicate()`:  `response.controls` **Changed** (Breaking ⚠️)\n* `Novu.Layouts.generatePreview()`: \n  *  `request.LayoutPreviewRequestDto.previewPayload.subscriber` **Changed** (Breaking ⚠️)\n  *  `response.previewPayloadExample.subscriber` **Changed**\n* `Novu.Workflows.get()`:  `response.issues.Map<RuntimeIssueDto>` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.update()`:  `response.issues.Map<RuntimeIssueDto>` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.create()`: \n  *  `request.CreateWorkflowDto.__source.enum(ai)` **Added**\n  *  `response.issues.Map<RuntimeIssueDto>` **Changed** (Breaking ⚠️)\n* `Novu.Workflows.Steps.retrieve()`:  `response` **Changed** (Breaking ⚠️)\n* `Novu.Subscribers.Credentials.update()`: \n  *  `request.UpdateSubscriberChannelRequestDto.integrationIdentifier` **Changed** (Breaking ⚠️)\n  *  `response` **Changed**\n* `Novu.Subscribers.Credentials.append()`: \n  *  `request.UpdateSubscriberChannelRequestDto.integrationIdentifier` **Changed** (Breaking ⚠️)\n  *  `response` **Changed**\n* `Novu.Subscribers.search()`:  `response.data[]` **Changed**\n* `Novu.Environments.diff()`: **Added**\n* `Novu.Subscribers.patch()`:  `response` **Changed**\n* `Novu.Subscribers.retrieve()`:  `response` **Changed**\n* `Novu.Subscribers.create()`:  `response` **Changed**\n* `Novu.Subscribers.Messages.updateAsSeen()`:  `response.subscriber` **Changed**\n* `Novu.Subscribers.Messages.markAllAs()`:  `response.[].subscriber` **Changed**\n* `Novu.Environments.publish()`: **Added**\n* `Novu.Subscribers.properties.updateOnlineFlag()`:  `response` **Changed**\n* `Novu.Integrations.list()`:  `response.[].configurations` **Changed**\n* `Novu.Integrations.create()`:  `response.configurations` **Changed**\n* `Novu.Integrations.update()`:  `response.configurations` **Changed**\n* `Novu.Integrations.delete()`:  `response.[].configurations` **Changed**\n* `Novu.Integrations.setAsPrimary()`:  `response.configurations` **Changed**\n* `Novu.Integrations.listActive()`:  `response.[].configurations` **Changed**\n* `Novu.Messages.retrieve()`:  `response.data[].subscriber` **Changed**\n"
 generatedFiles:
   - novu_api_postman_collection.json
