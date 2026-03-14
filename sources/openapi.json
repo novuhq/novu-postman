@@ -1943,6 +1943,652 @@ paths:
         - Environments
       security:
         - secretKey: []
+  /v2/environments/{targetEnvironmentId}/diff:
+    post:
+      operationId: EnvironmentsController_diffEnvironment
+      x-speakeasy-name-override: diff
+      summary: Compare resources between environments
+      description: >-
+        Compares workflows and other resources between the source and target
+        environments, returning detailed diff information including additions,
+        modifications, and deletions.
+      parameters:
+        - name: targetEnvironmentId
+          required: true
+          in: path
+          description: Target environment ID (MongoDB ObjectId) to compare against
+          example: 6615943e7ace93b0540ae377
+          schema:
+            type: string
+        - name: idempotency-key
+          in: header
+          description: A header for idempotency purposes
+          required: false
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Diff request configuration
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiffEnvironmentRequestDto'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiffEnvironmentResponseDto'
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '401':
+          description: Unauthorized
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '403':
+          description: Forbidden
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '404':
+          description: Not Found
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '405':
+          description: Method Not Allowed
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '409':
+          description: Conflict
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '413':
+          description: Payload Too Large
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '414':
+          description: URI Too Long
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '415':
+          description: Unsupported Media Type
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '422':
+          description: Unprocessable Entity
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorDto'
+        '429':
+          description: 'The client has sent too many requests in a given amount of time. '
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+            Retry-After:
+              $ref: '#/components/headers/Retry-After'
+          content:
+            application/json:
+              schema:
+                type: string
+                example: API rate limit exceeded
+        '500':
+          description: Internal Server Error
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '503':
+          description: >-
+            The server is currently unable to handle the request due to a
+            temporary overload or scheduled maintenance, which will likely be
+            alleviated after some delay.
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+            Retry-After:
+              $ref: '#/components/headers/Retry-After'
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Please wait some time, then try again.
+      tags:
+        - Environments
+      security:
+        - secretKey: []
+  /v2/environments/{targetEnvironmentId}/publish:
+    post:
+      operationId: EnvironmentsController_publishEnvironment
+      x-speakeasy-name-override: publish
+      summary: Publish resources to target environment
+      description: >-
+        Publishes all workflows and resources from the source environment to the
+        target environment. Optionally specify specific resources to publish or
+        use dryRun mode to preview changes.
+      parameters:
+        - name: targetEnvironmentId
+          required: true
+          in: path
+          description: Target environment ID (MongoDB ObjectId) to publish resources to
+          example: 6615943e7ace93b0540ae377
+          schema:
+            type: string
+        - name: idempotency-key
+          in: header
+          description: A header for idempotency purposes
+          required: false
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Publish request configuration
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishEnvironmentRequestDto'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishEnvironmentResponseDto'
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '401':
+          description: Unauthorized
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '403':
+          description: Forbidden
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '404':
+          description: Not Found
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '405':
+          description: Method Not Allowed
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '409':
+          description: Conflict
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '413':
+          description: Payload Too Large
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '414':
+          description: URI Too Long
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '415':
+          description: Unsupported Media Type
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '422':
+          description: Unprocessable Entity
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorDto'
+        '429':
+          description: 'The client has sent too many requests in a given amount of time. '
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+            Retry-After:
+              $ref: '#/components/headers/Retry-After'
+          content:
+            application/json:
+              schema:
+                type: string
+                example: API rate limit exceeded
+        '500':
+          description: Internal Server Error
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '503':
+          description: >-
+            The server is currently unable to handle the request due to a
+            temporary overload or scheduled maintenance, which will likely be
+            alleviated after some delay.
+          headers:
+            Content-Type:
+              $ref: '#/components/headers/Content-Type'
+            RateLimit-Limit:
+              $ref: '#/components/headers/RateLimit-Limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/RateLimit-Remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/RateLimit-Reset'
+            RateLimit-Policy:
+              $ref: '#/components/headers/RateLimit-Policy'
+            Idempotency-Key:
+              $ref: '#/components/headers/Idempotency-Key'
+            Idempotency-Replay:
+              $ref: '#/components/headers/Idempotency-Replay'
+            Retry-After:
+              $ref: '#/components/headers/Retry-After'
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Please wait some time, then try again.
+      tags:
+        - Environments
+      security:
+        - secretKey: []
   /v2/inbound-webhooks/delivery-providers/{environmentId}/{integrationId}:
     post:
       operationId: InboundWebhooksController_handleWebhook
@@ -27353,7 +27999,7 @@ info:
   description: >-
     Novu REST API. Please see https://docs.novu.co/api-reference for more
     details.
-  version: 3.13.0
+  version: 3.14.0
   contact:
     name: Novu Support
     url: https://discord.gg/novu
@@ -27427,7 +28073,7 @@ tags:
   - name: Translations
     description: Used to localize your notifications to different languages.
     externalDocs:
-      url: https://docs.novu.co/platform/workflow/translations
+      url: https://docs.novu.co/platform/workflow/advanced-features/translations
 servers:
   - url: https://api.novu.co
   - url: https://eu.api.novu.co
@@ -29641,16 +30287,16 @@ components:
             The identifier for the provider of the integration (e.g., "mailgun",
             "twilio").
         channel:
+          type: string
+          description: >-
+            The channel type for the integration, which defines how the
+            integration communicates (e.g., email, SMS).
           enum:
             - in_app
             - email
             - sms
             - chat
             - push
-          type: string
-          description: >-
-            The channel type for the integration, which defines how the
-            integration communicates (e.g., email, SMS).
         credentials:
           description: >-
             The credentials required for the integration to function, including
@@ -29703,6 +30349,7 @@ components:
         - providerId
         - channel
         - credentials
+        - configurations
         - active
         - deleted
         - primary
@@ -30171,6 +30818,7 @@ components:
             channel.
       required:
         - providerId
+        - integrationIdentifier
         - credentials
         - _integrationId
     SubscriberResponseDto:
@@ -30184,30 +30832,30 @@ components:
             `subscriberId` for that identifier.
         firstName:
           type: string
-          nullable: true
           description: The first name of the subscriber.
+          nullable: true
         lastName:
           type: string
-          nullable: true
           description: The last name of the subscriber.
+          nullable: true
         email:
           type: string
-          nullable: true
           description: The email address of the subscriber.
+          nullable: true
         phone:
           type: string
-          nullable: true
           description: The phone number of the subscriber.
+          nullable: true
         avatar:
           type: string
-          nullable: true
           description: The URL of the subscriber's avatar image.
+          nullable: true
         locale:
           type: string
-          nullable: true
           description: >-
             The locale setting of the subscriber, indicating their preferred
             language or region.
+          nullable: true
         channels:
           description: An array of channel settings associated with the subscriber.
           type: array
@@ -30221,26 +30869,26 @@ components:
             type: string
         isOnline:
           type: boolean
-          nullable: true
           description: Indicates whether the subscriber is currently online.
+          nullable: true
         lastOnlineAt:
           type: string
-          nullable: true
           description: >-
             The timestamp indicating when the subscriber was last online, in ISO
             8601 format.
+          nullable: true
         __v:
           type: number
           description: The version of the subscriber document.
         data:
           type: object
-          nullable: true
           description: Additional custom data for the subscriber
           additionalProperties: true
+          nullable: true
         timezone:
           type: string
-          nullable: true
           description: Timezone of the subscriber
+          nullable: true
         subscriberId:
           type: string
           description: >-
@@ -30270,6 +30918,10 @@ components:
             The timestamp indicating when the subscriber was last updated, in
             ISO 8601 format.
       required:
+        - firstName
+        - lastName
+        - isOnline
+        - lastOnlineAt
         - subscriberId
         - _organizationId
         - _environmentId
@@ -30290,6 +30942,7 @@ components:
             - $ref: '#/components/schemas/ChannelCredentials'
       required:
         - providerId
+        - integrationIdentifier
         - credentials
     UpdateSubscriberOnlineFlagRequestDto:
       type: object
@@ -31867,8 +32520,8 @@ components:
           nullable: true
         lastName:
           type: string
-          nullable: true
           description: User last name
+          nullable: true
         externalId:
           type: string
           description: User external ID
@@ -31888,6 +32541,7 @@ components:
       enum:
         - EMAIL_EDITOR_SELECT
         - LAYOUT_SELECT
+        - EMAIL_RENDERER_SELECT
         - BLOCK_EDITOR
         - EMAIL_BODY
         - TEXT_FULL_LINE
@@ -31923,6 +32577,7 @@ components:
         - QUERY_EDITOR
         - DATA
         - LAYOUT_EMAIL
+      x-speakeasy-unknown-values: allow
     UiSchemaProperty:
       type: object
       properties:
@@ -31998,6 +32653,8 @@ components:
           description: Email layout controls
           allOf:
             - $ref: '#/components/schemas/EmailControlsDto'
+      required:
+        - email
     LayoutControlsDto:
       type: object
       properties:
@@ -32107,12 +32764,12 @@ components:
           description: Enable or disable translations for this layout
           default: false
         controlValues:
-          nullable: true
           description: Control values for the layout
           allOf:
             - $ref: '#/components/schemas/LayoutControlValuesDto'
       required:
         - name
+        - controlValues
     DuplicateLayoutDto:
       type: object
       properties:
@@ -32169,30 +32826,30 @@ components:
             `subscriberId` for that identifier.
         firstName:
           type: string
-          nullable: true
           description: The first name of the subscriber.
+          nullable: true
         lastName:
           type: string
-          nullable: true
           description: The last name of the subscriber.
+          nullable: true
         email:
           type: string
-          nullable: true
           description: The email address of the subscriber.
+          nullable: true
         phone:
           type: string
-          nullable: true
           description: The phone number of the subscriber.
+          nullable: true
         avatar:
           type: string
-          nullable: true
           description: The URL of the subscriber's avatar image.
+          nullable: true
         locale:
           type: string
-          nullable: true
           description: >-
             The locale setting of the subscriber, indicating their preferred
             language or region.
+          nullable: true
         channels:
           description: An array of channel settings associated with the subscriber.
           type: array
@@ -32206,26 +32863,31 @@ components:
             type: string
         isOnline:
           type: boolean
-          nullable: true
           description: Indicates whether the subscriber is currently online.
+          nullable: true
         lastOnlineAt:
           type: string
-          nullable: true
           description: >-
             The timestamp indicating when the subscriber was last online, in ISO
             8601 format.
+          nullable: true
         __v:
           type: number
           description: The version of the subscriber document.
         data:
           type: object
-          nullable: true
           description: Additional custom data for the subscriber
           additionalProperties: true
+          nullable: true
         timezone:
           type: string
-          nullable: true
           description: Timezone of the subscriber
+          nullable: true
+      required:
+        - firstName
+        - lastName
+        - isOnline
+        - lastOnlineAt
     LayoutPreviewPayloadDto:
       type: object
       properties:
@@ -32938,22 +33600,7 @@ components:
                   - premium
     RuntimeIssueDto:
       type: object
-      properties:
-        issueType:
-          enum:
-            - MISSING_VALUE
-            - MAX_LENGTH_ACCESSED
-            - WORKFLOW_ID_ALREADY_EXISTS
-            - DUPLICATED_VALUE
-            - LIMIT_REACHED
-          type: string
-        variableName:
-          type: string
-        message:
-          type: string
-      required:
-        - issueType
-        - message
+      properties: {}
     ControlsMetadataDto:
       type: object
       properties:
@@ -33065,6 +33712,9 @@ components:
           description: Issues associated with the step
           allOf:
             - $ref: '#/components/schemas/StepIssuesDto'
+        stepResolverHash:
+          type: string
+          description: Hash identifying the deployed Cloudflare Worker for this step
       required:
         - controls
         - variables
@@ -33104,28 +33754,34 @@ components:
           minLength: 1
         body:
           type: string
-          default: ''
           description: >-
             Body content of the email, either a valid Maily JSON object, or html
             string.
+          default: ''
         editorType:
           type: string
-          default: block
           description: Type of editor to use for the body.
           enum:
             - block
             - html
+          default: block
+        rendererType:
+          type: string
+          description: Type of renderer to use (raw HTML or React Email step resolver)
+          enum:
+            - html
+            - react-email
+          default: html
         disableOutputSanitization:
           type: boolean
-          default: false
           description: Disable sanitization of the output.
+          default: false
         layoutId:
           type: string
-          nullable: true
-          minLength: 1
           description: >-
             Layout ID to use for the email. Null means no layout, undefined
             means default layout.
+          nullable: true
       required:
         - subject
         - body
@@ -33188,6 +33844,9 @@ components:
           description: Issues associated with the step
           allOf:
             - $ref: '#/components/schemas/StepIssuesDto'
+        stepResolverHash:
+          type: string
+          description: Hash identifying the deployed Cloudflare Worker for this step
       required:
         - controls
         - variables
@@ -33283,6 +33942,9 @@ components:
           description: Issues associated with the step
           allOf:
             - $ref: '#/components/schemas/StepIssuesDto'
+        stepResolverHash:
+          type: string
+          description: Hash identifying the deployed Cloudflare Worker for this step
       required:
         - controls
         - variables
@@ -33381,6 +34043,9 @@ components:
           description: Issues associated with the step
           allOf:
             - $ref: '#/components/schemas/StepIssuesDto'
+        stepResolverHash:
+          type: string
+          description: Hash identifying the deployed Cloudflare Worker for this step
       required:
         - controls
         - variables
@@ -33476,6 +34141,9 @@ components:
           description: Issues associated with the step
           allOf:
             - $ref: '#/components/schemas/StepIssuesDto'
+        stepResolverHash:
+          type: string
+          description: Hash identifying the deployed Cloudflare Worker for this step
       required:
         - controls
         - variables
@@ -33511,18 +34179,20 @@ components:
           additionalProperties: true
         type:
           type: string
-          enum:
-            - regular
-            - timed
           description: >-
             Type of the delay. Currently only 'regular' is supported by the
             schema.
+          enum:
+            - regular
+            - timed
           default: regular
         amount:
           type: number
-          minimum: 1
           description: Amount of time to delay.
+          minimum: 1
         unit:
+          type: string
+          description: Unit of time for the delay amount.
           enum:
             - seconds
             - minutes
@@ -33530,12 +34200,11 @@ components:
             - days
             - weeks
             - months
-          type: string
-          description: Unit of time for the delay amount.
         cron:
           type: string
-          minLength: 1
           description: Cron expression for the delay. Min length 1.
+      required:
+        - type
     DelayControlsMetadataResponseDto:
       type: object
       properties:
@@ -33595,6 +34264,9 @@ components:
           description: Issues associated with the step
           allOf:
             - $ref: '#/components/schemas/StepIssuesDto'
+        stepResolverHash:
+          type: string
+          description: Hash identifying the deployed Cloudflare Worker for this step
       required:
         - controls
         - variables
@@ -33611,9 +34283,11 @@ components:
       properties:
         amount:
           type: number
-          minimum: 1
           description: Amount of time for the look-back window.
+          minimum: 1
         unit:
+          type: string
+          description: Unit of time for the look-back window.
           enum:
             - seconds
             - minutes
@@ -33621,8 +34295,6 @@ components:
             - days
             - weeks
             - months
-          type: string
-          description: Unit of time for the look-back window.
       required:
         - amount
         - unit
@@ -33650,17 +34322,19 @@ components:
           additionalProperties: true
         type:
           type: string
+          description: The type of digest strategy. Determines which fields are applicable.
           enum:
             - regular
             - timed
-          description: The type of digest strategy. Determines which fields are applicable.
         amount:
           type: number
-          minimum: 1
           description: >-
             The amount of time for the digest interval (for REGULAR type). Min
             1.
+          minimum: 1
         unit:
+          type: string
+          description: The unit of time for the digest interval (for REGULAR type).
           enum:
             - seconds
             - minutes
@@ -33668,15 +34342,12 @@ components:
             - days
             - weeks
             - months
-          type: string
-          description: The unit of time for the digest interval (for REGULAR type).
         lookBackWindow:
           description: Configuration for look-back window (for REGULAR type).
           allOf:
             - $ref: '#/components/schemas/LookBackWindowDto'
         cron:
           type: string
-          minLength: 1
           description: Cron expression for TIMED digest. Min length 1.
         digestKey:
           type: string
@@ -33742,6 +34413,9 @@ components:
           description: Issues associated with the step
           allOf:
             - $ref: '#/components/schemas/StepIssuesDto'
+        stepResolverHash:
+          type: string
+          description: Hash identifying the deployed Cloudflare Worker for this step
       required:
         - controls
         - variables
@@ -33784,37 +34458,37 @@ components:
           default: fixed
         amount:
           type: number
-          minimum: 1
           description: >-
             The amount of time for the throttle window (required for fixed
             type).
+          minimum: 1
         unit:
           type: string
+          description: The unit of time for the throttle window (required for fixed type).
           enum:
             - minutes
             - hours
             - days
-          description: The unit of time for the throttle window (required for fixed type).
         dynamicKey:
           type: string
-          minLength: 1
           description: >-
             Key path to retrieve dynamic window value (required for dynamic
             type).
           example: payload.timestamp
         threshold:
           type: number
-          minimum: 1
-          maximum: 100
           description: >-
             The maximum number of executions allowed within the window. Defaults
             to 1.
+          minimum: 1
           default: 1
         throttleKey:
           type: string
           description: >-
             Optional key for grouping throttle rules. If not provided, defaults
             to workflow and subscriber combination.
+      required:
+        - type
     ThrottleControlsMetadataResponseDto:
       type: object
       properties:
@@ -33874,6 +34548,9 @@ components:
           description: Issues associated with the step
           allOf:
             - $ref: '#/components/schemas/StepIssuesDto'
+        stepResolverHash:
+          type: string
+          description: Hash identifying the deployed Cloudflare Worker for this step
       required:
         - controls
         - variables
@@ -33951,6 +34628,9 @@ components:
           description: Issues associated with the step
           allOf:
             - $ref: '#/components/schemas/StepIssuesDto'
+        stepResolverHash:
+          type: string
+          description: Hash identifying the deployed Cloudflare Worker for this step
       required:
         - controls
         - variables
@@ -34014,12 +34694,12 @@ components:
           additionalProperties: true
         body:
           type: string
-          minLength: 1
           description: Content/body of the in-app message. Required if subject is empty.
+          minLength: 1
         subject:
           type: string
-          minLength: 1
           description: Subject/title of the in-app message. Required if body is empty.
+          minLength: 1
         avatar:
           type: string
           description: >-
@@ -34041,8 +34721,8 @@ components:
             - $ref: '#/components/schemas/RedirectDto'
         disableOutputSanitization:
           type: boolean
-          default: false
           description: Disable sanitization of the output.
+          default: false
         data:
           type: object
           description: Additional data payload for the step.
@@ -34106,6 +34786,9 @@ components:
           description: Issues associated with the step
           allOf:
             - $ref: '#/components/schemas/StepIssuesDto'
+        stepResolverHash:
+          type: string
+          description: Hash identifying the deployed Cloudflare Worker for this step
       required:
         - controls
         - variables
@@ -34122,18 +34805,18 @@ components:
       properties:
         enabled:
           type: boolean
-          default: true
           description: >-
             A flag specifying if notification delivery is enabled for the
             workflow. If true, notification delivery is enabled by default for
             all channels. This setting can be overridden by the channel
             preferences.
+          default: true
         readOnly:
           type: boolean
-          default: false
           description: >-
             A flag specifying if the preference is read-only. If true, the
             preference cannot be changed by the Subscriber.
+          default: false
       required:
         - enabled
         - readOnly
@@ -34142,10 +34825,10 @@ components:
       properties:
         enabled:
           type: boolean
-          default: true
           description: >-
             A flag specifying if notification delivery is enabled for the
             channel. If true, notification delivery is enabled.
+          default: true
       required:
         - enabled
     WorkflowPreferencesDto:
@@ -34176,8 +34859,8 @@ components:
       type: object
       properties:
         user:
-          nullable: true
           description: User-specific workflow preferences
+          nullable: true
           allOf:
             - $ref: '#/components/schemas/WorkflowPreferencesDto'
         default:
@@ -34216,8 +34899,8 @@ components:
           description: Enable or disable payload schema validation
         payloadSchema:
           type: object
-          nullable: true
           description: The payload JSON Schema for the workflow
+          nullable: true
           additionalProperties: true
         isTranslationEnabled:
           type: boolean
@@ -34245,11 +34928,11 @@ components:
             - $ref: '#/components/schemas/UserResponseDto'
         lastPublishedAt:
           type: string
-          nullable: true
           description: Timestamp of the last workflow publication
-        lastPublishedBy:
           nullable: true
+        lastPublishedBy:
           description: User who last published the workflow
+          nullable: true
           allOf:
             - $ref: '#/components/schemas/UserResponseDto'
         steps:
@@ -34297,8 +34980,8 @@ components:
           nullable: true
         payloadExample:
           type: object
-          nullable: true
           description: Generated payload example based on the payload schema
+          nullable: true
           additionalProperties: true
         severity:
           $ref: '#/components/schemas/SeverityLevelEnum'
@@ -34545,6 +35228,7 @@ components:
         - onboarding_get_started
         - bridge
         - dashboard
+        - ai
     PreferencesRequestDto:
       type: object
       properties:
@@ -34581,8 +35265,8 @@ components:
           description: Enable or disable payload schema validation
         payloadSchema:
           type: object
-          nullable: true
           description: The payload JSON Schema for the workflow
+          nullable: true
           additionalProperties: true
         isTranslationEnabled:
           type: boolean
@@ -34661,8 +35345,8 @@ components:
           description: Enable or disable payload schema validation
         payloadSchema:
           type: object
-          nullable: true
           description: The payload JSON Schema for the workflow
+          nullable: true
           additionalProperties: true
         isTranslationEnabled:
           type: boolean
@@ -34773,9 +35457,9 @@ components:
           nullable: true
         stepTypeOverviews:
           type: array
+          description: Overview of step types in the workflow
           items:
             $ref: '#/components/schemas/StepTypeEnum'
-          description: Overview of step types in the workflow
         isTranslationEnabled:
           type: boolean
           description: Is translation enabled for the workflow
@@ -35007,10 +35691,10 @@ components:
             - $ref: '#/components/schemas/PreviewPayloadDto'
         schema:
           type: object
-          nullable: true
           description: >-
             The payload schema that was used to generate the preview payload
             example
+          nullable: true
           additionalProperties: true
         result:
           description: Preview result
@@ -35114,6 +35798,391 @@ components:
           type: string
       required:
         - name
+    SyncActionEnum:
+      type: string
+      description: Sync action performed
+      enum:
+        - created
+        - updated
+        - skipped
+        - deleted
+    SyncedWorkflowDto:
+      type: object
+      properties:
+        resourceType:
+          $ref: '#/components/schemas/ResourceTypeEnum'
+        resourceId:
+          type: string
+          description: Resource ID
+        resourceName:
+          type: string
+          description: Resource name
+        action:
+          $ref: '#/components/schemas/SyncActionEnum'
+      required:
+        - resourceType
+        - resourceId
+        - resourceName
+        - action
+    FailedWorkflowDto:
+      type: object
+      properties:
+        resourceType:
+          $ref: '#/components/schemas/ResourceTypeEnum'
+        resourceId:
+          type: string
+          description: Resource ID
+        resourceName:
+          type: string
+          description: Resource name
+        error:
+          type: string
+          description: Error message
+        stack:
+          type: string
+          description: Error stack trace
+      required:
+        - resourceType
+        - resourceId
+        - resourceName
+        - error
+    SkippedWorkflowDto:
+      type: object
+      properties:
+        resourceType:
+          $ref: '#/components/schemas/ResourceTypeEnum'
+        resourceId:
+          type: string
+          description: Resource ID
+        resourceName:
+          type: string
+          description: Resource name
+        reason:
+          type: string
+          description: Reason for skipping
+      required:
+        - resourceType
+        - resourceId
+        - resourceName
+        - reason
+    SyncResultDto:
+      type: object
+      properties:
+        resourceType:
+          $ref: '#/components/schemas/ResourceTypeEnum'
+        successful:
+          description: Successfully synced resources
+          type: array
+          items:
+            $ref: '#/components/schemas/SyncedWorkflowDto'
+        failed:
+          description: Failed resource syncs
+          type: array
+          items:
+            $ref: '#/components/schemas/FailedWorkflowDto'
+        skipped:
+          description: Skipped resources
+          type: array
+          items:
+            $ref: '#/components/schemas/SkippedWorkflowDto'
+        totalProcessed:
+          type: number
+          description: Total number of resources processed
+      required:
+        - resourceType
+        - successful
+        - failed
+        - skipped
+        - totalProcessed
+    PublishSummaryDto:
+      type: object
+      properties:
+        resources:
+          type: number
+          description: Number of resources processed
+        successful:
+          type: number
+          description: Number of successful syncs
+        failed:
+          type: number
+          description: Number of failed syncs
+        skipped:
+          type: number
+          description: Number of skipped resources
+      required:
+        - resources
+        - successful
+        - failed
+        - skipped
+    PublishEnvironmentResponseDto:
+      type: object
+      properties:
+        results:
+          description: Sync results by resource type
+          type: array
+          items:
+            $ref: '#/components/schemas/SyncResultDto'
+        summary:
+          description: Summary of the sync operation
+          allOf:
+            - $ref: '#/components/schemas/PublishSummaryDto'
+      required:
+        - results
+        - summary
+    ResourceToPublishDto:
+      type: object
+      properties:
+        resourceType:
+          $ref: '#/components/schemas/ResourceTypeEnum'
+        resourceId:
+          type: string
+          description: Unique identifier of the resource to publish
+          example: workflow-id-1
+      required:
+        - resourceType
+        - resourceId
+    PublishEnvironmentRequestDto:
+      type: object
+      properties:
+        sourceEnvironmentId:
+          type: string
+          description: >-
+            Source environment ID to sync from. Defaults to the Development
+            environment if not provided.
+          example: 507f1f77bcf86cd799439011
+        dryRun:
+          type: boolean
+          description: Perform a dry run without making actual changes
+          default: false
+        resources:
+          description: >-
+            Array of specific resources to publish. If not provided, all
+            resources will be published.
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceToPublishDto'
+    UserInfoDto:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: User ID
+        firstName:
+          type: string
+          description: User first name
+        lastName:
+          type: string
+          nullable: true
+          description: User last name
+        externalId:
+          type: string
+          description: User external ID
+      required:
+        - _id
+        - firstName
+    ResourceInfoDto:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+          description: Resource ID (workflow ID or step ID)
+        name:
+          type: string
+          nullable: true
+          description: Resource name (workflow name or step name)
+        updatedBy:
+          nullable: true
+          description: User who last updated the resource
+          allOf:
+            - $ref: '#/components/schemas/UserInfoDto'
+        updatedAt:
+          type: string
+          nullable: true
+          description: When the resource was last updated
+          format: date-time
+          example: '2024-01-15T10:30:00.000Z'
+    DiffActionEnum:
+      type: string
+      description: Type of change
+      enum:
+        - added
+        - modified
+        - deleted
+        - unchanged
+        - moved
+    ResourceDiffDto:
+      type: object
+      properties:
+        sourceResource:
+          nullable: true
+          description: Source resource information
+          allOf:
+            - $ref: '#/components/schemas/ResourceInfoDto'
+        targetResource:
+          nullable: true
+          description: Target resource information
+          allOf:
+            - $ref: '#/components/schemas/ResourceInfoDto'
+        resourceType:
+          $ref: '#/components/schemas/ResourceTypeEnum'
+        action:
+          $ref: '#/components/schemas/DiffActionEnum'
+        diffs:
+          type: object
+          description: Detailed changes (only for modified resources)
+          properties:
+            previous:
+              type: object
+              description: Previous state of the resource (null for added resources)
+              additionalProperties: true
+              nullable: true
+            new:
+              type: object
+              description: New state of the resource (null for deleted resources)
+              additionalProperties: true
+              nullable: true
+        stepType:
+          type: string
+          description: Step type (only for step resources)
+        previousIndex:
+          type: number
+          description: Previous index in steps array (for moved/deleted steps)
+        newIndex:
+          type: number
+          description: New index in steps array (for moved/added steps)
+      required:
+        - resourceType
+        - action
+    DiffSummaryDto:
+      type: object
+      properties:
+        added:
+          type: number
+          description: Number of added resources (workflows and steps)
+        modified:
+          type: number
+          description: Number of modified resources (workflows and steps)
+        deleted:
+          type: number
+          description: Number of deleted resources (workflows and steps)
+        unchanged:
+          type: number
+          description: Number of unchanged resources (workflows and steps)
+      required:
+        - added
+        - modified
+        - deleted
+        - unchanged
+    DependencyReasonEnum:
+      type: string
+      description: Reason for the dependency
+      enum:
+        - LAYOUT_REQUIRED_FOR_WORKFLOW
+        - LAYOUT_EXISTS_IN_TARGET
+    ResourceDependencyDto:
+      type: object
+      properties:
+        resourceType:
+          $ref: '#/components/schemas/ResourceTypeEnum'
+        resourceId:
+          type: string
+          description: ID of the dependent resource
+        resourceName:
+          type: string
+          description: Name of the dependent resource
+        isBlocking:
+          type: boolean
+          description: Whether this dependency blocks the operation
+        reason:
+          $ref: '#/components/schemas/DependencyReasonEnum'
+      required:
+        - resourceType
+        - resourceId
+        - resourceName
+        - isBlocking
+        - reason
+    ResourceDiffResultDto:
+      type: object
+      properties:
+        resourceType:
+          $ref: '#/components/schemas/ResourceTypeEnum'
+        sourceResource:
+          nullable: true
+          description: Source resource information
+          allOf:
+            - $ref: '#/components/schemas/ResourceInfoDto'
+        targetResource:
+          nullable: true
+          description: Target resource information
+          allOf:
+            - $ref: '#/components/schemas/ResourceInfoDto'
+        changes:
+          description: List of specific changes for this resource
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceDiffDto'
+        summary:
+          description: Summary of changes for this resource
+          allOf:
+            - $ref: '#/components/schemas/DiffSummaryDto'
+        dependencies:
+          description: Dependencies that affect this resource
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceDependencyDto'
+      required:
+        - resourceType
+        - changes
+        - summary
+    EnvironmentDiffSummaryDto:
+      type: object
+      properties:
+        totalEntities:
+          type: number
+          description: Total number of entities compared
+        totalChanges:
+          type: number
+          description: Total number of changes detected
+        hasChanges:
+          type: boolean
+          description: Whether any changes were detected
+      required:
+        - totalEntities
+        - totalChanges
+        - hasChanges
+    DiffEnvironmentResponseDto:
+      type: object
+      properties:
+        sourceEnvironmentId:
+          type: string
+          description: Source environment ID
+        targetEnvironmentId:
+          type: string
+          description: Target environment ID
+        resources:
+          description: Diff resources by resource type
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceDiffResultDto'
+        summary:
+          description: Overall summary
+          allOf:
+            - $ref: '#/components/schemas/EnvironmentDiffSummaryDto'
+      required:
+        - sourceEnvironmentId
+        - targetEnvironmentId
+        - resources
+        - summary
+    DiffEnvironmentRequestDto:
+      type: object
+      properties:
+        sourceEnvironmentId:
+          type: string
+          description: >-
+            Source environment ID to compare from. Defaults to the Development
+            environment if not provided.
+          example: 507f1f77bcf86cd799439011
     WorkspaceDto:
       type: object
       properties:
