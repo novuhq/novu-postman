@@ -31,3 +31,11 @@ Based on:
 - Speakeasy CLI 1.782.1 (2.908.0) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [postman v1.2.0] postman
+
+## 2026-11-21 00:05:20
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.811.0 (2.968.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [postman v1.3.0] postman
